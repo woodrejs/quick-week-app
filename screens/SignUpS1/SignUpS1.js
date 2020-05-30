@@ -1,38 +1,47 @@
 import React from "react";
 import { View } from "react-native";
-import MenuScreen from "../../components/MenuScreen";
+import Basic from "../../components/Basic";
 import Input from "../../components/Input";
-import Btn from "../../components/Btn";
+import Button from "../../components/Button";
 import COLORS from "../../constans/COLORS";
-import Steps from "../../components/Steps";
 import styles from "./SignUpS1.css";
+import CheckBox from "../../components/CheckBox";
 
-const SignUpS1 = () => {
+const SignUpS1 = ({ navigation }) => {
   return (
-    <MenuScreen title="step one">
+    <Basic title="step one" size="sm" navigation={navigation}>
       <View style={styles.top}>
         <View style={styles.box}>
-          <Input label="login" />
-          <Input label="login" />
+          <Input label="password" size={{ height: 35, width: 280 }} />
+          <Input label="repeat password" size={{ height: 35, width: 280 }} />
+          <View style={styles.checkBox}>
+            <CheckBox title="ACCEPT TERMS AND CONDITION" />
+          </View>
         </View>
-        <Btn
+
+        <Button
           title="next"
-          size="md"
-          btnColor={COLORS.primary}
-          txtColor={COLORS.third}
+          height={40}
+          width={280}
+          bckColor={COLORS.first}
+          txtColor={COLORS.fourth}
+          onPress={() => navigation.navigate("SignUpS2")}
         />
+      </View>
+      <View style={styles.mid}>
+        <View style={styles.steps}></View>
       </View>
       <View style={styles.bot}>
-        <Btn
+        <Button
           title="back"
-          size="md"
-          btnColor={COLORS.fourth}
-          txtColor={COLORS.fifth}
+          height={30}
+          width={280}
+          bckColor={COLORS.fourth}
+          txtColor={COLORS.third}
+          onPress={() => navigation.goBack()}
         />
-
-        <Steps labelsNumber={2} stepsNumber={1} />
       </View>
-    </MenuScreen>
+    </Basic>
   );
 };
 

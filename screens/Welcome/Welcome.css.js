@@ -1,22 +1,30 @@
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   screen: {
-    alignItems: "center",
-    justifyContent: "center",
-    height: "60%",
-    marginTop: "25%",
     width: "100%",
+    height: "100%",
+    position: "relative",
+    backgroundColor: "white",
   },
-  box: {
-    width: "70%",
-    flex: 1,
-    justifyContent: "space-evenly",
-    marginBottom: "5%",
+  layer1: {
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    zIndex: 1,
   },
-  h1: { fontSize: 25, fontWeight: "700", letterSpacing: 1, lineHeight: 29 },
-  h2: { fontSize: 14, fontWeight: "600", letterSpacing: 0.7, lineHeight: 18 },
-  h3: { fontSize: 11, letterSpacing: 0.7, lineHeight: 15 },
+  layer2: {
+    width: "100%",
+    height: "100%",
+    zIndex: 2,
+    position: "absolute",
+  },
+  bck: { position: "relative", width: "100%", height: "100%" },
+  light: { zIndex: 1, position: "absolute", bottom: 0 },
+  dark: { zIndex: 2, position: "absolute", bottom: 0 },
+  top: { flex: 2, alignItems: "center", justifyContent: "center" },
+  bot: { flex: 1, alignItems: "center", justifyContent: "flex-start" },
+  txt: { marginVertical: 17, textTransform: "uppercase", letterSpacing: 0.5 },
 });
 
 export default styles;

@@ -1,51 +1,63 @@
 import React from "react";
-import { View, Text } from "react-native";
-import MenuScreen from "../../components/MenuScreen";
-import Btn from "../../components/Btn";
+import { View } from "react-native";
+import Basic from "../../components/Basic";
+import Button from "../../components/Button";
+import Txt from "../../components/Txt";
 import COLORS from "../../constans/COLORS";
 import styles from "./Menu.css";
 
-const Menu = () => {
+const Menu = ({ navigation }) => {
   return (
-    <MenuScreen title="menu">
+    <Basic title="menu" size="lg" navigation={navigation}>
       <View style={styles.top}>
-        <Btn
+        <Button
           title="week plan"
-          size="md"
-          btnColor={COLORS.primary}
-          txtColor={COLORS.third}
+          height={40}
+          width={280}
+          bckColor={COLORS.first}
+          txtColor={COLORS.fourth}
+          onPress={() => navigation.navigate("Plan")}
         />
       </View>
       <View style={styles.mid}>
-        <Text style={styles.txt}>favorites</Text>
-        <Btn
+        <Txt weight={600} customStyle={styles.txt}>
+          favorites
+        </Txt>
+        <Button
           title="my events"
-          size="md"
-          btnColor={COLORS.secondary}
-          txtColor={COLORS.third}
+          height={40}
+          width={280}
+          bckColor={COLORS.secound}
+          txtColor={COLORS.fourth}
+          onPress={() => navigation.navigate("Events")}
         />
-        <Btn
+        <Button
           title="my places"
-          size="md"
-          btnColor={COLORS.secondary}
-          txtColor={COLORS.third}
+          height={35}
+          width={280}
+          bckColor={COLORS.secound}
+          txtColor={COLORS.fourth}
+          onPress={() => navigation.navigate("Places")}
         />
       </View>
       <View style={styles.bot}>
-        <Btn
+        <Button
           title="search"
-          size="md"
-          btnColor={COLORS.fourth}
+          height={40}
+          width={280}
+          bckColor={COLORS.fourth}
           txtColor={COLORS.fifth}
+          onPress={() => navigation.navigate("Search")}
         />
-        <Btn
+        <Button
           title="log out"
-          size="md"
-          btnColor={COLORS.fourth}
+          height={40}
+          width={280}
+          bckColor={COLORS.fourth}
           txtColor={COLORS.fifth}
         />
       </View>
-    </MenuScreen>
+    </Basic>
   );
 };
 

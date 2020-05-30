@@ -2,15 +2,16 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   top: {
-    flex: 5,
+    flex: 10,
+    paddingTop: "5%",
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
   },
   bot: {
-    flex: 1,
+    flex: 3,
     width: "100%",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
   },
   box: {

@@ -6,17 +6,24 @@ const styles = StyleSheet.create({
   label: {
     width: "100%",
     textTransform: "uppercase",
-    fontSize: 12,
-    letterSpacing: 1,
+    fontSize: 13,
+    letterSpacing: 2,
   },
   input: {
-    width: "100%",
-    height: 42,
     borderColor: COLORS.sixth,
+    backgroundColor: "white",
     borderWidth: 1,
     borderRadius: 5,
     marginVertical: "7%",
     paddingHorizontal: "5%",
+    shadowColor: "black",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 1,
   },
 });
 

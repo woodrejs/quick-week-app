@@ -1,45 +1,58 @@
 import React from "react";
-import { View, Text } from "react-native";
-import MenuScreen from "../../components/MenuScreen";
-import Btn from "../../components/Btn";
+import { View } from "react-native";
+import Basic from "../../components/Basic";
+import Button from "../../components/Button";
 import COLORS from "../../constans/COLORS";
+import Txt from "../../components/Txt";
 import styles from "./SignUp.css";
+import FbIcon from "../../img/icons/facebook_icon.svg";
+import GoogleIcon from "../../img/icons/google_icon.svg";
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   return (
-    <MenuScreen title="sign up">
+    <Basic title="sign up" size="md" navigation={navigation}>
       <View style={styles.top}>
-        <Btn
-          title="sing up"
-          size="md"
-          btnColor={COLORS.primary}
+        <Button
+          title="sign up"
+          height={45}
+          width={280}
+          bckColor={COLORS.first}
           txtColor={COLORS.fourth}
+          onPress={() => navigation.push("SignUpS1")}
         />
       </View>
       <View style={styles.mid}>
-        <Text style={styles.txt}>sign up with:</Text>
-        <Btn
+        <Txt weight={600} customStyle={styles.txt}>
+          sign up with:
+        </Txt>
+        <Button
           title="facebook"
-          size="md"
-          btnColor={COLORS.sixth}
-          txtColor={COLORS.fifth}
+          height={40}
+          width={280}
+          bckColor={COLORS.secound}
+          txtColor={COLORS.fourth}
+          component={<FbIcon />}
         />
-        <Btn
+        <Button
           title="google"
-          size="md"
-          btnColor={COLORS.sixth}
-          txtColor={COLORS.fifth}
+          height={40}
+          width={280}
+          bckColor={COLORS.secound}
+          txtColor={COLORS.fourth}
+          component={<GoogleIcon />}
         />
       </View>
       <View style={styles.bot}>
-        <Btn
+        <Button
           title="back"
-          size="md"
-          btnColor={COLORS.sixth}
-          txtColor={COLORS.fifth}
+          height={30}
+          width={280}
+          bckColor={COLORS.fourth}
+          txtColor={COLORS.third}
+          onPress={() => navigation.goBack()}
         />
       </View>
-    </MenuScreen>
+    </Basic>
   );
 };
 

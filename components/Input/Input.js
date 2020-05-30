@@ -1,12 +1,15 @@
 import React from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, TextInput } from "react-native";
+import Txt from "../Txt";
 import styles from "./Input.css";
 
-const Input = ({ label }) => {
+const Input = ({ label, size }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>{label}</Text>
-      <TextInput style={styles.input} />
+      <Txt weight={600} customStyle={styles.label}>
+        {label}
+      </Txt>
+      <TextInput style={{ ...styles.input, ...size }} />
     </View>
   );
 };

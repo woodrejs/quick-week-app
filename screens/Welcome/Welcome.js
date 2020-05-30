@@ -1,30 +1,52 @@
 import React from "react";
-import { View, Text } from "react-native";
-import MenuScreen from "../../components/MenuScreen";
-import Btn from "../../components/Btn";
+import { View } from "react-native";
+import MdLight from "../../img/backgrounds/mdLight.svg";
+import MdDark from "../../img/backgrounds/mdDark.svg";
+import Logo from "../../img/logo/lg_home.svg";
+import Button from "../../components/Button";
 import COLORS from "../../constans/COLORS";
+import Txt from "../../components/Txt";
 import styles from "./Welcome.css";
 
-const Welcome = () => {
+const Welcome = ({ navigation }) => {
   return (
-    <MenuScreen title="welcome">
-      <View style={styles.screen}>
-        <View style={styles.box}>
-          <Text style={styles.h1}>CONGRATULATIONS</Text>
-          <Text style={styles.h2}>YOU HAVE SIGN UP TO QUICK WEEK APP</Text>
-          <Text style={styles.h3}>
-            NOW YOU CAN SEARCH AND TRACK YOUR FAVORITES PLACESES AND EVENTS.
-          </Text>
+    <View style={styles.screen}>
+      <View style={styles.layer1}>
+        <View style={styles.bck}>
+          <MdLight width={"100%"} style={styles.light} />
+          <MdDark width={"100%"} style={styles.dark} />
         </View>
-
-        <Btn
-          title="start"
-          size="md"
-          btnColor={COLORS.primary}
-          txtColor={COLORS.third}
-        />
       </View>
-    </MenuScreen>
+      <View style={styles.layer2}>
+        <View style={styles.top}>
+          <Logo />
+        </View>
+        <View style={styles.bot}>
+          <Txt weight={600} customStyle={styles.txt}>
+            dont have account yet?
+          </Txt>
+          <Button
+            title="sign up"
+            bckColor={COLORS.first}
+            txtColor={COLORS.fourth}
+            height={40}
+            width={280}
+            onPress={() => navigation.navigate("SignUp")}
+          />
+          <Txt weight={600} customStyle={styles.txt}>
+            or
+          </Txt>
+          <Button
+            title="log in"
+            bckColor={COLORS.secound}
+            txtColor={COLORS.fourth}
+            height={40}
+            width={280}
+            onPress={() => navigation.navigate("Login")}
+          />
+        </View>
+      </View>
+    </View>
   );
 };
 

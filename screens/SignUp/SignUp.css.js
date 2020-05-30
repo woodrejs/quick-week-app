@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   mid: {
     width: "100%",
     alignItems: "center",
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
     flex: 2,
   },
   bot: {
@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
   txt: {
     fontSize: 12,
     textTransform: "uppercase",
-    fontWeight: "700",
     marginTop: "20%",
+    letterSpacing: 1,
     marginBottom: "5%",
   },
 });

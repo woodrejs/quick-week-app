@@ -1,35 +1,39 @@
 import React from "react";
 import { View } from "react-native";
-import MenuScreen from "../../components/MenuScreen";
+import Basic from "../../components/Basic";
 import Input from "../../components/Input";
-import Btn from "../../components/Btn";
+import Button from "../../components/Button";
 import COLORS from "../../constans/COLORS";
 import styles from "./Login.css";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   return (
-    <MenuScreen title="log in">
+    <Basic title="log in" size="lg" navigation={navigation}>
       <View style={styles.top}>
         <View style={styles.box}>
-          <Input label="login" />
-          <Input label="password" />
+          <Input label="login" size={{ height: 45, width: 280 }} />
+          <Input label="password" size={{ height: 45, width: 280 }} />
         </View>
-        <Btn
+        <Button
           title="log in"
-          size="md"
-          btnColor={COLORS.primary}
-          txtColor={COLORS.third}
+          height={45}
+          width={280}
+          bckColor={COLORS.first}
+          txtColor={COLORS.fourth}
+          onPress={() => navigation.navigate("Menu")}
         />
       </View>
       <View style={styles.bot}>
-        <Btn
+        <Button
           title="back"
-          size="md"
-          btnColor={COLORS.fourth}
-          txtColor={COLORS.fifth}
+          height={40}
+          width={280}
+          bckColor={COLORS.fourth}
+          txtColor={COLORS.third}
+          onPress={() => navigation.goBack()}
         />
       </View>
-    </MenuScreen>
+    </Basic>
   );
 };
 

@@ -1,41 +1,54 @@
 import React from "react";
 import { View } from "react-native";
 import COLORS from "../../constans/COLORS";
-import MenuScreen from "../../components/MenuScreen";
-import Btn from "../../components/Btn";
+import Basic from "../../components/Basic";
+import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Checkbox from "../../components/CheckBox";
-import Steps from "../../components/Steps";
 import styles from "./Search.css";
 
-const Search = () => {
+const Search = ({ navigation }) => {
   return (
-    <MenuScreen title="search">
+    <Basic title="search" size="sm" navigation={navigation}>
       <View style={styles.top}>
         <View style={styles.container}>
-          <Input label="phrase" />
+          <Input label="phrase" size={{ height: 40, width: 280 }} />
           <View style={styles.box}>
             <Checkbox title="places" />
             <Checkbox title="events" />
           </View>
-          <Btn
-            btnColor={COLORS.primary}
-            txtColor={COLORS.third}
+          <Button
             title="next"
-            size="md"
+            height={40}
+            width={280}
+            bckColor={COLORS.first}
+            txtColor={COLORS.fourth}
+            onPress={() => navigation.navigate("SearchS1")}
           />
         </View>
       </View>
-      <View style={styles.bot}>
-        <Btn
-          title="back"
-          size="md"
-          btnColor={COLORS.fourth}
-          txtColor={COLORS.fifth}
-        />
-        <Steps labelsNumber={3} stepsNumber={1} />
+      <View style={styles.mid}>
+        <View style={styles.steps}></View>
       </View>
-    </MenuScreen>
+      <View style={styles.bot}>
+        <Button
+          title="skip"
+          height={30}
+          width={280}
+          bckColor={COLORS.fourth}
+          txtColor={COLORS.third}
+          onPress={() => navigation.navigate("SearchS1")}
+        />
+        <Button
+          title="back"
+          height={30}
+          width={280}
+          bckColor={COLORS.fourth}
+          txtColor={COLORS.third}
+          onPress={() => navigation.goBack()}
+        />
+      </View>
+    </Basic>
   );
 };
 
