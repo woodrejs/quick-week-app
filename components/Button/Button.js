@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableHighlight } from "react-native";
 import Txt from "../Txt";
 import styles from "./Button.css";
 
@@ -33,14 +33,14 @@ const Button = ({
     }
   }, [txtColor, component]);
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableHighlight onPress={onPress} style={styles.box}>
       <View style={btnStyle}>
         {component}
         <Txt weight={600} customStyle={txtStyle}>
           {title}
         </Txt>
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 

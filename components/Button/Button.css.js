@@ -1,20 +1,21 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  box: { borderRadius: 5 },
   btn: {
     borderRadius: 5,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     alignItems: "center",
-    shadowColor: "black",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    elevation: 2,
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   txt: {
     letterSpacing: 1,

@@ -4,13 +4,13 @@ import Basic from "../../components/Basic";
 import Txt from "../../components/Txt";
 import Button from "../../components/Button";
 import COLORS from "../../constans/COLORS";
-import styles from "./SignUpS3.css";
+import styles from "./SignUpEnd.css";
 
 const txt_1 = "congratulation";
 const txt_2 = "you have sign up to quick week app";
 const txt_3 = "now you can search and track your favorites places and events";
 
-const SignUpS3 = ({ navigation }) => {
+const SignUpEnd = ({ navigation }) => {
   return (
     <Basic title="welcome" size="lg" navigation={navigation}>
       <View style={styles.screen} navigation={navigation}>
@@ -33,6 +33,7 @@ const SignUpS3 = ({ navigation }) => {
               width={280}
               bckColor={COLORS.first}
               txtColor={COLORS.fourth}
+              onPress={() => navigation.navigate("Menu", { screen: "Menu" })}
             />
           </View>
         </View>
@@ -41,4 +42,4 @@ const SignUpS3 = ({ navigation }) => {
   );
 };
 
-export default SignUpS3;
+export default SignUpEnd;

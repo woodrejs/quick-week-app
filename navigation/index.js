@@ -4,60 +4,123 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import * as Screens from "../screens";
 
-const SigUpStack = createStackNavigator();
-const SignUpStackNav = () => {
+const PlacesStack = createStackNavigator();
+const PlaccesStackScreen = () => {
   return (
-    <SigUpStack.Navigator screenOptions={{ headerShown: false }}>
-      <SigUpStack.Screen name="SignUp" component={Screens.SignUp} />
-      <SigUpStack.Screen name="SignUpS1" component={Screens.SignUpS1} />
-      <SigUpStack.Screen name="SignUpS2" component={Screens.SignUpS2} />
-      <SigUpStack.Screen name="SignUpS3" component={Screens.SignUpS3} />
-    </SigUpStack.Navigator>
+    <PlacesStack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Places"
+    >
+      <PlacesStack.Screen name="Places" component={Screens.Places} />
+      <PlacesStack.Screen name="Event" component={Screens.Event} />
+    </PlacesStack.Navigator>
+  );
+};
+
+const EventsStack = createStackNavigator();
+const EventsStackScreen = () => {
+  return (
+    <EventsStack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Events"
+    >
+      <EventsStack.Screen name="Events" component={Screens.Events} />
+      <EventsStack.Screen name="Event" component={Screens.Event} />
+    </EventsStack.Navigator>
+  );
+};
+const PlanStack = createStackNavigator();
+const PlanStackScreen = () => {
+  return (
+    <PlanStack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Plan"
+    >
+      <PlanStack.Screen name="Plan" component={Screens.Plan} />
+      <PlanStack.Screen name="Event" component={Screens.Event} />
+    </PlanStack.Navigator>
   );
 };
 
 const SearchStack = createStackNavigator();
-const SearchStackNav = () => {
+const SearchStackScreen = () => {
   return (
-    <SearchStack.Navigator screenOptions={{ headerShown: false }}>
+    <SearchStack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Search"
+    >
       <SearchStack.Screen name="Search" component={Screens.Search} />
-      <SearchStack.Screen name="SearchS1" component={Screens.SearchS1} />
-      <SearchStack.Screen name="SearchS2" component={Screens.SearchS2} />
       <SearchStack.Screen name="Result" component={Screens.Result} />
+      <SearchStack.Screen name="Event" component={Screens.Event} />
     </SearchStack.Navigator>
   );
 };
 
+const SigUpStack = createStackNavigator();
+const SignUpStackScreen = () => {
+  return (
+    <SigUpStack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="SignUp"
+    >
+      <SigUpStack.Screen name="SignUp" component={Screens.SignUp} />
+      <SigUpStack.Screen name="SignUpForm" component={Screens.SignUpForm} />
+      <SigUpStack.Screen name="SignUpEnd" component={Screens.SignUpEnd} />
+    </SigUpStack.Navigator>
+  );
+};
+
+const WelcomeStack = createStackNavigator();
+const WelcomeStackScreen = () => {
+  return (
+    <WelcomeStack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Welcome"
+    >
+      <WelcomeStack.Screen name="Welcome" component={Screens.Welcome} />
+      <WelcomeStack.Screen name="Login" component={Screens.Login} />
+      <WelcomeStack.Screen name="SignUp" component={SignUpStackScreen} />
+    </WelcomeStack.Navigator>
+  );
+};
+
 const MenuDrawer = createDrawerNavigator();
-const MenuDrawerNav = () => {
+const MenuDrawerScreen = () => {
   return (
     <MenuDrawer.Navigator initialRouteName="Menu">
       <MenuDrawer.Screen name="Menu" component={Screens.Menu} />
-      <MenuDrawer.Screen name="Plan" component={Screens.Plan} />
-      <MenuDrawer.Screen name="Places" component={Screens.Places} />
-      <MenuDrawer.Screen name="Events" component={Screens.Events} />
-      <MenuDrawer.Screen name="Search" component={SearchStackNav} />
+      <MenuDrawer.Screen name="Map" component={Screens.Map} />
+      <MenuDrawer.Screen name="Plan" component={PlanStackScreen} />
+      <MenuDrawer.Screen name="Places" component={PlaccesStackScreen} />
+      <MenuDrawer.Screen name="Events" component={EventsStackScreen} />
+      <MenuDrawer.Screen name="Search" component={SearchStackScreen} />
     </MenuDrawer.Navigator>
   );
 };
 
-const RootStack = createStackNavigator();
-const RootStackNav = () => {
+const AuthStack = createStackNavigator();
+const AuthStackScreen = () => {
   return (
-    <RootStack.Navigator screenOptions={{ headerShown: false }}>
-      <RootStack.Screen name="Welcome" component={Screens.Welcome} />
-      <RootStack.Screen name="Login" component={Screens.Login} />
-      <RootStack.Screen name="Event" component={Screens.Event} />
-      <RootStack.Screen name="SignUp" component={SignUpStackNav} />
-      <RootStack.Screen name="Menu" component={MenuDrawerNav} />
-    </RootStack.Navigator>
+    <AuthStack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Welcome"
+    >
+      <AuthStack.Screen
+        name="Welcome"
+        component={WelcomeStackScreen}
+      ></AuthStack.Screen>
+      <AuthStack.Screen
+        name="Menu"
+        component={MenuDrawerScreen}
+      ></AuthStack.Screen>
+    </AuthStack.Navigator>
   );
 };
 
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <RootStackNav />
+      <AuthStackScreen />
     </NavigationContainer>
   );
 };

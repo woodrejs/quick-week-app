@@ -1,34 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
 import COLORS from "../../constans/COLORS";
 import Basic from "../../components/Basic";
 import Button from "../../components/Button";
-import Input from "../../components/Input";
-import Checkbox from "../../components/CheckBox";
 import styles from "./Search.css";
+import Steps from "../../components/Steps";
+import SearchPhrase from "../../components/SearchPhrase";
+import SearchCategories from "../../components/SearchCategories";
+import SearchDate from "../../components/SearchDate";
 
 const Search = ({ navigation }) => {
+  const [step, setStep] = useState(1);
+  const nextStep = () => {
+    if (step === 3) navigation.navigate("Result");
+    else setStep(step + 1);
+  };
+  const prevStep = () => {
+    if (step === 1) navigation.navigate("Menu", { screen: "Menu" });
+    else setStep(step - 1);
+  };
   return (
     <Basic title="search" size="sm" navigation={navigation}>
       <View style={styles.top}>
-        <View style={styles.container}>
-          <Input label="phrase" size={{ height: 40, width: 280 }} />
-          <View style={styles.box}>
-            <Checkbox title="places" />
-            <Checkbox title="events" />
-          </View>
-          <Button
-            title="next"
-            height={40}
-            width={280}
-            bckColor={COLORS.first}
-            txtColor={COLORS.fourth}
-            onPress={() => navigation.navigate("SearchS1")}
-          />
-        </View>
+        {step === 1 && <SearchPhrase next={nextStep} />}
+        {step === 2 && <SearchCategories next={nextStep} />}
+        {step === 3 && <SearchDate next={nextStep} />}
       </View>
       <View style={styles.mid}>
-        <View style={styles.steps}></View>
+        <Steps step={step} steps={3} />
       </View>
       <View style={styles.bot}>
         <Button
@@ -37,7 +36,7 @@ const Search = ({ navigation }) => {
           width={280}
           bckColor={COLORS.fourth}
           txtColor={COLORS.third}
-          onPress={() => navigation.navigate("SearchS1")}
+          onPress={nextStep}
         />
         <Button
           title="back"
@@ -45,7 +44,7 @@ const Search = ({ navigation }) => {
           width={280}
           bckColor={COLORS.fourth}
           txtColor={COLORS.third}
-          onPress={() => navigation.goBack()}
+          onPress={prevStep}
         />
       </View>
     </Basic>

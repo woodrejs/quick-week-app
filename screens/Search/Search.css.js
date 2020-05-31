@@ -1,12 +1,7 @@
 import { StyleSheet, View } from "react-native";
 
 const styles = StyleSheet.create({
-  top: {
-    flex: 6,
-    width: "100%",
-    justifyContent: "center",
-    paddingTop: "15%",
-  },
+  top: { flex: 8, width: "100%", justifyContent: "center" },
   mid: { flex: 2, justifyContent: "center", alignItems: "center" },
   bot: {
     flex: 4,
@@ -14,12 +9,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-evenly",
   },
-  container: {
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  box: { width: "70%", flexDirection: "row", marginBottom: "10%" },
   steps: { height: 40, width: 150, backgroundColor: "blue", borderRadius: 50 },
 });
 

@@ -20,7 +20,7 @@ const Login = ({ navigation }) => {
           width={280}
           bckColor={COLORS.first}
           txtColor={COLORS.fourth}
-          onPress={() => navigation.navigate("Menu")}
+          onPress={() => navigation.navigate("Menu", { screen: "Menu" })}
         />
       </View>
       <View style={styles.bot}>

@@ -55,6 +55,7 @@ const Menu = ({ navigation }) => {
           width={280}
           bckColor={COLORS.fourth}
           txtColor={COLORS.fifth}
+          onPress={() => navigation.navigate("Welcome", { screen: "Welcome" })}
         />
       </View>
     </Basic>

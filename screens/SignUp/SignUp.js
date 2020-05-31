@@ -18,7 +18,7 @@ const SignUp = ({ navigation }) => {
           width={280}
           bckColor={COLORS.first}
           txtColor={COLORS.fourth}
-          onPress={() => navigation.push("SignUpS1")}
+          onPress={() => navigation.push("SignUpForm")}
         />
       </View>
       <View style={styles.mid}>
