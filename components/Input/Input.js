@@ -6,7 +6,7 @@ import styles from "./Input.css";
 const Input = ({ label, size }) => {
   return (
     <View style={styles.container}>
-      <Txt weight={600} customStyle={styles.label}>
+      <Txt weight={500} customStyle={{ ...styles.label, ...size }}>
         {label}
       </Txt>
       <TextInput style={{ ...styles.input, ...size }} />

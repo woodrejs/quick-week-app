@@ -12,6 +12,7 @@ import Clock1 from "../../img/icons/clock1_icon.svg";
 import Gallery from "../../components/Gallery";
 import styles from "./Event.css";
 import BotBck from "../../img/backgrounds/botBck.svg";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const title = "jakis przykladowy tytul";
 const txt =
@@ -69,8 +70,8 @@ const Event = ({ navigation }) => {
           <View style={styles.btnBox}>
             <Button
               title="go web"
-              height={30}
-              width={360}
+              height={DIMENSIONS.height * 0.05}
+              width={DIMENSIONS.width * 0.9}
               bckColor={COLORS.fourth}
               txtColor={COLORS.third}
             />
@@ -81,15 +82,15 @@ const Event = ({ navigation }) => {
           <View style={styles.btnBox}>
             <Button
               title="go top"
-              height={30}
-              width={360}
+              height={DIMENSIONS.height * 0.05}
+              width={DIMENSIONS.width * 0.9}
               bckColor={COLORS.fourth}
               txtColor={COLORS.third}
             />
             <Button
               title="go back"
-              height={30}
-              width={360}
+              height={DIMENSIONS.height * 0.05}
+              width={DIMENSIONS.width * 0.9}
               bckColor={COLORS.fourth}
               txtColor={COLORS.third}
               onPress={() => navigation.goBack()}

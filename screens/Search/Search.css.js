@@ -1,13 +1,21 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  top: { flex: 8, width: "100%", justifyContent: "center" },
-  mid: { flex: 2, justifyContent: "center", alignItems: "center" },
+  top: {
+    flex: 6,
+    width: "100%",
+    justifyContent: "center",
+  },
+  mid: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   bot: {
-    flex: 4,
+    flex: 2,
     width: "100%",
     alignItems: "center",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
   },
   steps: { height: 40, width: 150, backgroundColor: "blue", borderRadius: 50 },
 });

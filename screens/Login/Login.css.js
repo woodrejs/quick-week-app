@@ -17,9 +17,10 @@ const styles = StyleSheet.create({
   box: {
     width: "100%",
     alignItems: "center",
-    justifyContent: "center",
-    marginBottom: "5%",
+    justifyContent: "space-around",
+    marginBottom: "10%",
   },
+  inputBox: { marginBottom: 25 },
 });
 
 export default styles;

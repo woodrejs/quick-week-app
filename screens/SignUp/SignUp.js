@@ -7,6 +7,7 @@ import Txt from "../../components/Txt";
 import styles from "./SignUp.css";
 import FbIcon from "../../img/icons/facebook_icon.svg";
 import GoogleIcon from "../../img/icons/google_icon.svg";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const SignUp = ({ navigation }) => {
   return (
@@ -14,8 +15,8 @@ const SignUp = ({ navigation }) => {
       <View style={styles.top}>
         <Button
           title="sign up"
-          height={45}
-          width={280}
+          height={DIMENSIONS.height * 0.06}
+          width={DIMENSIONS.width * 0.75}
           bckColor={COLORS.first}
           txtColor={COLORS.fourth}
           onPress={() => navigation.push("SignUpForm")}
@@ -27,16 +28,16 @@ const SignUp = ({ navigation }) => {
         </Txt>
         <Button
           title="facebook"
-          height={40}
-          width={280}
+          height={DIMENSIONS.height * 0.05}
+          width={DIMENSIONS.width * 0.75}
           bckColor={COLORS.secound}
           txtColor={COLORS.fourth}
           component={<FbIcon />}
         />
         <Button
           title="google"
-          height={40}
-          width={280}
+          height={DIMENSIONS.height * 0.05}
+          width={DIMENSIONS.width * 0.75}
           bckColor={COLORS.secound}
           txtColor={COLORS.fourth}
           component={<GoogleIcon />}
@@ -45,8 +46,8 @@ const SignUp = ({ navigation }) => {
       <View style={styles.bot}>
         <Button
           title="back"
-          height={30}
-          width={280}
+          height={DIMENSIONS.height * 0.05}
+          width={DIMENSIONS.width * 0.75}
           bckColor={COLORS.fourth}
           txtColor={COLORS.third}
           onPress={() => navigation.goBack()}

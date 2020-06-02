@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const styles = StyleSheet.create({
   container: {
@@ -9,7 +10,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   box: { marginRight: 7 },
-  txt: { textAlign: "left", fontSize: 13, textTransform: "uppercase" },
+  txt: {
+    textAlign: "left",
+    fontSize: DIMENSIONS.height * 0.018,
+    textTransform: "uppercase",
+  },
 });
 
 export default styles;

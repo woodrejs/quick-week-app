@@ -1,19 +1,19 @@
 import { StyleSheet } from "react-native";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const styles = StyleSheet.create({
   box: {
-    height: 30,
-    width: 70,
-    margin: 1,
+    height: DIMENSIONS.height * 0.05,
+    marginBottom: 2,
     borderWidth: 2,
     borderRadius: 2,
     justifyContent: "center",
     alignItems: "center",
   },
   txt: {
-    fontSize: 12,
+    fontSize: DIMENSIONS.height * 0.015,
+    letterSpacing: 0.2,
     textTransform: "uppercase",
-    fontWeight: "bold",
   },
 });
 export default styles;

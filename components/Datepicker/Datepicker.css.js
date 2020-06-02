@@ -1,22 +1,16 @@
 import { StyleSheet } from "react-native";
 import COLORS from "../../constans/COLORS";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const styles = StyleSheet.create({
-  container: { width: "70%" },
-  label: {
-    fontSize: 13,
-    textTransform: "uppercase",
-    letterSpacing: 1,
-    marginBottom: 10,
-  },
   box: {
+    width: DIMENSIONS.width * 0.75,
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "100%",
     marginBottom: 15,
   },
   picker: {
-    flex: 3,
+    flex: 4,
     marginRight: 10,
     backgroundColor: "white",
     borderColor: COLORS.sixth,

@@ -1,12 +1,13 @@
 import { StyleSheet } from "react-native";
 import COLORS from "../../constans/COLORS";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const styles = StyleSheet.create({
-  container: { width: "70%" },
+  container: { width: "100%", alignItems: "center" },
   label: {
     width: "100%",
     textTransform: "uppercase",
-    fontSize: 13,
+    fontSize: DIMENSIONS.height * 0.021,
     letterSpacing: 2,
   },
   input: {
@@ -14,8 +15,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderWidth: 1,
     borderRadius: 5,
-    marginVertical: "7%",
-    paddingHorizontal: "5%",
     shadowColor: "black",
     shadowOffset: {
       width: 0,

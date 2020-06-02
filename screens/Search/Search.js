@@ -8,9 +8,10 @@ import Steps from "../../components/Steps";
 import SearchPhrase from "../../components/SearchPhrase";
 import SearchCategories from "../../components/SearchCategories";
 import SearchDate from "../../components/SearchDate";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const Search = ({ navigation }) => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const nextStep = () => {
     if (step === 3) navigation.navigate("Result");
     else setStep(step + 1);
@@ -31,17 +32,9 @@ const Search = ({ navigation }) => {
       </View>
       <View style={styles.bot}>
         <Button
-          title="skip"
-          height={30}
-          width={280}
-          bckColor={COLORS.fourth}
-          txtColor={COLORS.third}
-          onPress={nextStep}
-        />
-        <Button
           title="back"
-          height={30}
-          width={280}
+          height={DIMENSIONS.height * 0.05}
+          width={DIMENSIONS.width * 0.75}
           bckColor={COLORS.fourth}
           txtColor={COLORS.third}
           onPress={prevStep}

@@ -3,23 +3,18 @@ import { ScrollView, View } from "react-native";
 import Basic from "../../components/Basic";
 import Cart from "../../components/Cart";
 import COLORS from "../../constans/COLORS";
+import BckImg from "../../img/test.jpg";
 
 const Result = ({ navigation }) => {
   return (
     <Basic title="plan" size="lg" navigation={navigation}>
       <ScrollView style={{ marginTop: "10%" }}>
         <Cart
+          bckImg={BckImg}
           title="to jest jakis przykladowy tytul"
-          favoritesIcon={true}
-          quicIcon={true}
-          labelColor={COLORS.first}
-          onPress={() => navigation.navigate("Event")}
-        />
-        <Cart
-          title="to jest jakis przykladowy tytul"
-          favoritesIcon={true}
-          quicIcon={true}
-          labelColor={COLORS.first}
+          heartIcon={true}
+          quickIcon={true}
+          color={COLORS.first}
           onPress={() => navigation.navigate("Event")}
         />
 

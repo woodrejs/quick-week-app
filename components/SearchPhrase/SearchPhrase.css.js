@@ -1,12 +1,21 @@
 import { StyleSheet } from "react-native";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const styles = StyleSheet.create({
-  MainBox: {
+  mainBox: {
+    flex: 1,
     width: "100%",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
-  checkboxsBox: { width: "70%", flexDirection: "row", marginBottom: "10%" },
+  inputBox: { justifyContent: "flex-end" },
+  checkboxsBox: {
+    width: DIMENSIONS.width * 0.75,
+    flexDirection: "row",
+    marginTop: DIMENSIONS.height * 0.04,
+    marginBottom: DIMENSIONS.height * 0.06,
+  },
+  btnBox: { justifyContent: "flex-start" },
 });
 
 export default styles;

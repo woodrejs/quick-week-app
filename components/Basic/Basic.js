@@ -1,6 +1,5 @@
 import React from "react";
 import { View } from "react-native";
-import Logo from "../../img/logo/lg_red.svg";
 import Bck from "../Bck";
 import Bar from "../Bar";
 import styles from "./Bacis.css";

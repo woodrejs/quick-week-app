@@ -1,67 +1,47 @@
 import React from "react";
-import { View, TouchableOpacity, ImageBackground } from "react-native";
-import BckImg from "../../img/test.jpg";
-import QwIcon from "../../img/logo/lg_white.svg";
-import HeartIcon from "../../img/heart/heart_white.svg";
+import { View } from "react-native";
 import styles from "./Cart.css";
 import Txt from "../Txt";
+import ImgBox from "../ImgBox";
+import IconsSection from "../IconsSection";
+import CartTitle from "../CartTitle";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const Cart = ({
   onPress,
-  title = null,
-  date = null,
-  startDate = null,
-  time = null,
-  favoritesIcon = false,
-  quicIcon = false,
-  labelColor = null,
-  distance = null,
-  now = null,
-  hour = null,
+  title,
+  bckImg,
+  color,
+  heartIcon,
+  quickIcon,
+  cornerTxt,
+  middleTxt,
 }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={onPress}>
-        <ImageBackground source={BckImg} style={styles.mainBox}>
-          <View style={styles.mask}></View>
-          <View style={styles.dateBox}>
-            <Txt weight={700} customStyle={styles.date}>
-              {date}
-              {now}
-            </Txt>
-          </View>
-          <View style={styles.timeBox}>
-            <Txt weight={700} customStyle={styles.time}>
-              {time}
-              {distance}
-              {hour}
-            </Txt>
-            <Txt weight={700} customStyle={styles.start}>
-              {startDate}
-            </Txt>
-          </View>
-          <View style={{ flex: 1 }}></View>
-        </ImageBackground>
-      </TouchableOpacity>
-      <View style={{ ...styles.titleBox, ...{ backgroundColor: labelColor } }}>
-        <TouchableOpacity onPress={onPress}>
-          <Txt weight={700} customStyle={styles.title}>
-            {title}
+      <ImgBox onPress={onPress} img={bckImg}>
+        <View style={styles.cornerBox}>
+          <Txt weight={700} customStyle={styles.cornerTxt}>
+            {cornerTxt}
           </Txt>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.iconsBox}>
-        {favoritesIcon && (
-          <TouchableOpacity>
-            <HeartIcon height={25} width={25} />
-          </TouchableOpacity>
-        )}
-        {quicIcon && (
-          <TouchableOpacity>
-            <QwIcon height={25} width={25} />
-          </TouchableOpacity>
-        )}
-      </View>
+        </View>
+        <View style={styles.middleBox}>
+          <Txt weight={700} customStyle={styles.middleTxt}>
+            {middleTxt}
+          </Txt>
+        </View>
+      </ImgBox>
+
+      <CartTitle onPress={onPress} color={color}>
+        {title}
+      </CartTitle>
+
+      <IconsSection
+        customStyle={styles.iconsBox}
+        iconSize={DIMENSIONS.height * 0.04}
+        heartIcon={heartIcon}
+        quickIcon={quickIcon}
+      />
     </View>
   );
 };

@@ -6,6 +6,7 @@ import COLORS from "../../constans/COLORS";
 import Steps from "../../components/Steps";
 import PasswordForm from "../../components/PasswordForm";
 import MailLoginForm from "../../components/MailLoginForm";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const SignUpForm = ({ navigation }) => {
   const [step, setStep] = useState(1);
@@ -29,8 +30,8 @@ const SignUpForm = ({ navigation }) => {
       <View style={styles.bot}>
         <Button
           title="back"
-          height={30}
-          width={280}
+          height={DIMENSIONS.height * 0.04}
+          width={DIMENSIONS.width * 0.75}
           bckColor={COLORS.fourth}
           txtColor={COLORS.third}
           onPress={prevStep}

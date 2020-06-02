@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import COLORS from "../../constans/COLORS";
 import styles from "./Tile.css";
+import Txt from "../Txt";
 
 const Tile = ({ title }) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -15,14 +16,15 @@ const Tile = ({ title }) => {
           ...{ borderColor: `${isChecked ? COLORS.secound : COLORS.sixth}` },
         }}
       >
-        <Text
-          style={{
+        <Txt
+          weight={600}
+          customStyle={{
             ...styles.txt,
             ...{ color: `${isChecked ? COLORS.secound : COLORS.sixth}` },
           }}
         >
           {title}
-        </Text>
+        </Txt>
       </View>
     </TouchableOpacity>
   );

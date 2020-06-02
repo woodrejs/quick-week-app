@@ -5,6 +5,7 @@ import Txt from "../../components/Txt";
 import Button from "../../components/Button";
 import COLORS from "../../constans/COLORS";
 import styles from "./SignUpEnd.css";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const txt_1 = "congratulation";
 const txt_2 = "you have sign up to quick week app";
@@ -29,8 +30,8 @@ const SignUpEnd = ({ navigation }) => {
           <View style={styles.btnBox}>
             <Button
               title="start"
-              height={40}
-              width={280}
+              height={DIMENSIONS.height * 0.05}
+              width={DIMENSIONS.width * 0.75}
               bckColor={COLORS.first}
               txtColor={COLORS.fourth}
               onPress={() => navigation.navigate("Menu", { screen: "Menu" })}

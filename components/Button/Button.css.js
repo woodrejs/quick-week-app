@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const styles = StyleSheet.create({
   box: { borderRadius: 5 },
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
   },
   txt: {
     letterSpacing: 1,
-    fontSize: 12,
+    fontSize: DIMENSIONS.height * 0.016,
     textTransform: "uppercase",
   },
 });

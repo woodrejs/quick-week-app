@@ -4,21 +4,38 @@ import Input from "../Input";
 import CheckBox from "../CheckBox";
 import Button from "../Button";
 import COLORS from "../../constans/COLORS";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const PasswordForm = ({ next }) => {
   return (
     <View>
       <View style={styles.box}>
-        <Input label="password" size={{ height: 35, width: 280 }} />
-        <Input label="repeat password" size={{ height: 35, width: 280 }} />
+        <View style={styles.inputBox}>
+          <Input
+            label="password"
+            size={{
+              height: DIMENSIONS.height * 0.05,
+              width: DIMENSIONS.width * 0.75,
+            }}
+          />
+        </View>
+        <View style={styles.inputBox}>
+          <Input
+            label="repeat password"
+            size={{
+              height: DIMENSIONS.height * 0.05,
+              width: DIMENSIONS.width * 0.75,
+            }}
+          />
+        </View>
         <View style={styles.checkBox}>
           <CheckBox title="ACCEPT TERMS AND CONDITION" />
         </View>
       </View>
       <Button
         title="next"
-        height={40}
-        width={280}
+        height={DIMENSIONS.height * 0.05}
+        width={DIMENSIONS.width * 0.75}
         bckColor={COLORS.first}
         txtColor={COLORS.fourth}
         onPress={next}
@@ -33,12 +50,13 @@ const styles = StyleSheet.create({
   box: {
     width: "100%",
     alignItems: "center",
-    marginBottom: "5%",
+    marginBottom: "10%",
     justifyContent: "center",
   },
   checkBox: {
-    height: 40,
-    width: 280,
+    height: DIMENSIONS.height * 0.03,
+    width: DIMENSIONS.width * 0.75,
     justifyContent: "flex-start",
   },
+  inputBox: { marginBottom: 25 },
 });

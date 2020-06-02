@@ -7,6 +7,7 @@ import Button from "../../components/Button";
 import COLORS from "../../constans/COLORS";
 import Txt from "../../components/Txt";
 import styles from "./Welcome.css";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const Welcome = ({ navigation }) => {
   return (
@@ -29,8 +30,8 @@ const Welcome = ({ navigation }) => {
             title="sign up"
             bckColor={COLORS.first}
             txtColor={COLORS.fourth}
-            height={40}
-            width={280}
+            height={DIMENSIONS.height * 0.05}
+            width={DIMENSIONS.width * 0.75}
             onPress={() => navigation.navigate("SignUp")}
           />
           <Txt weight={600} customStyle={styles.txt}>
@@ -40,8 +41,8 @@ const Welcome = ({ navigation }) => {
             title="log in"
             bckColor={COLORS.secound}
             txtColor={COLORS.fourth}
-            height={40}
-            width={280}
+            height={DIMENSIONS.height * 0.05}
+            width={DIMENSIONS.width * 0.75}
             onPress={() => navigation.navigate("Login")}
           />
         </View>
