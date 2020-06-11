@@ -11,11 +11,13 @@ const Button = ({
   title,
   component,
   onPress,
+  radius,
 }) => {
   const btnStyle = useMemo(
     () => ({
       ...styles.btn,
       ...{ height, width, backgroundColor: bckColor },
+      ...radius,
     }),
     [height, width, bckColor]
   );
@@ -33,7 +35,7 @@ const Button = ({
     }
   }, [txtColor, component]);
   return (
-    <TouchableHighlight onPress={onPress} style={styles.box}>
+    <TouchableHighlight onPress={onPress} style={{ ...styles.box, ...radius }}>
       <View style={btnStyle}>
         {component}
         <Txt weight={600} customStyle={txtStyle}>

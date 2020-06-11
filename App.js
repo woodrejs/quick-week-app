@@ -1,14 +1,22 @@
 import React from "react";
-import { useFonts } from "@use-expo/font";
-import Navigation from "./navigation";
-import Loading from "./components/Loading";
+import store from "./Store";
+import { Provider } from "react-redux";
+import Init from "./utils";
 
-export default App = () => {
-  let [isLoaded] = useFonts({
-    "OpenSans-Regular": require("./assets/fonts/OpenSans-Regular.ttf"),
-    "OpenSans-SemiBold": require("./assets/fonts/OpenSans-SemiBold.ttf"),
-    "OpenSans-Bold": require("./assets/fonts/OpenSans-Bold.ttf"),
-  });
-  if (!isLoaded) return <Loading />;
-  else return <Navigation />;
+const App = () => {
+  return (
+    <Provider store={store}>
+      <Init />
+    </Provider>
+  );
 };
+
+export default App;
+
+/// init
+/*
+const KEY = "1319679107135189731165976618182301395321";
+fetch(`http://go.wroclaw.pl/api/v1.0/enums/typeGroupTags/forOffers/?key=${KEY}`)
+  .then((response) => response.json())
+  .then((data) => store.dispatch(getCategoriesNames(data)));
+*/
