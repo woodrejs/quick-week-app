@@ -9,23 +9,28 @@ import SearchPhrase from "../../components/SearchPhrase";
 import SearchCategories from "../../components/SearchCategories";
 import SearchDate from "../../components/SearchDate";
 import DIMENSIONS from "../../constans/DIMENSIONS";
+import { useDispatch, useSelector } from "react-redux";
+import { searchActions } from "../../actions";
 
 const Search = ({ navigation }) => {
-  const [step, setStep] = useState(2);
+  const step = useSelector(({ search }) => search.step);
+  const dispatch = useDispatch();
   const nextStep = () => {
-    if (step === 3) navigation.navigate("Result");
-    else setStep(step + 1);
+    if (step === 3) {
+      navigation.navigate("Result"); //niepotrzebne
+      dispatch(searchActions.setStep(1));
+    } else dispatch(searchActions.setStep(step + 1));
   };
   const prevStep = () => {
     if (step === 1) navigation.navigate("Menu", { screen: "Menu" });
-    else setStep(step - 1);
+    else dispatch(searchActions.setStep(step - 1));
   };
   return (
     <Basic title="search" size="sm" navigation={navigation}>
       <View style={styles.top}>
         {step === 1 && <SearchPhrase next={nextStep} />}
         {step === 2 && <SearchCategories next={nextStep} />}
-        {step === 3 && <SearchDate next={nextStep} />}
+        {step === 3 && <SearchDate navigation={navigation} />}
       </View>
       <View style={styles.mid}>
         <Steps step={step} steps={3} />

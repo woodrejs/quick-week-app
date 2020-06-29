@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import Navigation from "../components/Navigation";
 import setFonts from "./setFonts";
 import Loading from "../components/Loading";
 import { useSelector } from "react-redux";
-import setLocation from "./setLocation";
+import setCoords from "./setCoords";
+import setMarkers from "./setMarkers";
+import setCategories from "./setCategories";
 
 const Init = () => {
-  setFonts();
-  setLocation();
   const isFontsLoaded = useSelector((state) => state.app.isFontsLoaded);
-  const isLocationLoaded = useSelector((state) => state.app.isLocationLoaded);
+  const isCoordsLoaded = useSelector((state) => state.app.isCoordsLoaded);
+  const isPlacesMarkersLoaded = useSelector(
+    (state) => state.app.isPlacesMarkersLoaded
+  );
 
-  if (isFontsLoaded && isLocationLoaded) return <Navigation />;
+  setFonts(isFontsLoaded);
+  setCoords(isCoordsLoaded);
+  setMarkers();
+  setCategories();
+
+  if (isFontsLoaded && isCoordsLoaded && isPlacesMarkersLoaded)
+    return <Navigation />;
   else return <Loading />;
 };
 

@@ -16,6 +16,10 @@ const styles = StyleSheet.create({
     marginBottom: DIMENSIONS.height * 0.06,
   },
   btnBox: { justifyContent: "flex-start" },
+  inputSize: {
+    height: DIMENSIONS.height * 0.055,
+    width: DIMENSIONS.width * 0.75,
+  },
 });
 
 export default styles;

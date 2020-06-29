@@ -9,7 +9,7 @@ import {
 const ImgBox = ({ onPress, img, children }) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <ImageBackground source={img} style={styles.box}>
+      <ImageBackground source={{ uri: img }} style={styles.box}>
         <View style={styles.mask}></View>
         <View style={styles.content}>{children}</View>
       </ImageBackground>

@@ -4,11 +4,7 @@ const initState = {
   date: new Date().toISOString().slice(0, 10),
   places: true,
   events: false,
-  location: {
-    latitude: 51.108507,
-    longitude: 17.012231,
-    delta: 0.05,
-  },
+  mapCoords: {},
 };
 
 const map = (state = initState, action) => {
@@ -21,7 +17,18 @@ const map = (state = initState, action) => {
       return { ...state, places: !state.places };
     case VARIABLES.SET_EVENTS:
       return { ...state, events: !state.events };
-    case VARIABLES.SET_LONGITUDE:
+    case VARIABLES.SET_MAP_COORDINATES:
+      return { ...state, mapCoords: action.payload };
+    case VARIABLES.SET_INITIAL_REGION:
+      return { ...state, initialRegion: payload };
+    default:
+      return state;
+  }
+};
+export default map;
+
+/*
+  case VARIABLES.SET_LONGITUDE:
       return {
         ...state,
         location: {
@@ -29,16 +36,5 @@ const map = (state = initState, action) => {
           ...{ longitude: action.payload },
         },
       };
-    case VARIABLES.SET_LATITUDE:
-      return {
-        ...state,
-        location: {
-          ...state.location,
-          ...{ latitude: action.payload },
-        },
-      };
-    default:
-      return state;
-  }
-};
-export default map;
+
+      */

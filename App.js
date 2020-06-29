@@ -12,11 +12,12 @@ const App = () => {
 };
 
 export default App;
-
-/// init
 /*
 const KEY = "1319679107135189731165976618182301395321";
-fetch(`http://go.wroclaw.pl/api/v1.0/enums/typeGroupTags/forOffers/?key=${KEY}`)
+fetch(`http://go.wroclaw.pl/api/v1.0/categories/for-offers?key=${KEY}`)
   .then((response) => response.json())
-  .then((data) => store.dispatch(getCategoriesNames(data)));
+  .then((data) => {
+    const array = data.items.map((item) => ({ id: item.id, name: item.name }));
+    console.log(array);
+  });
 */

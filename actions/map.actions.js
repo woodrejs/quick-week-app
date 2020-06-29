@@ -8,13 +8,13 @@ export const decrementDate = (date) => ({
   type: VARIABLES.DECREMENT_DATE,
   date,
 });
+export const setMapCoords = (payload) => ({
+  type: VARIABLES.SET_MAP_COORDINATES,
+  payload,
+});
+export const setInitialRegion = () => ({
+  type: VARIABLES.SET_INITIAL_REGION,
+  payload,
+});
 export const setPlaces = () => ({ type: VARIABLES.SET_PLACES });
 export const setEvents = () => ({ type: VARIABLES.SET_EVENTS });
-export const setLongitude = (payload) => ({
-  type: VARIABLES.SET_LONGITUDE,
-  payload,
-});
-export const setLatitude = (payload) => ({
-  type: VARIABLES.SET_LATITUDE,
-  payload,
-});
