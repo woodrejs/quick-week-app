@@ -9,17 +9,19 @@ import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const Cart = ({
   onPress,
-  title,
-  bckImg,
+  data,
   color,
-  heartIcon,
-  quickIcon,
   cornerTxt,
+  heartIcon = true,
   middleTxt,
+  quickIcon = true,
+  type,
 }) => {
+  const { id, image, title } = data;
+
   return (
     <View style={styles.container}>
-      <ImgBox onPress={onPress} img={bckImg}>
+      <ImgBox onPress={onPress} img={image}>
         <View style={styles.cornerBox}>
           <Txt weight={700} customStyle={styles.cornerTxt}>
             {cornerTxt}
@@ -37,10 +39,14 @@ const Cart = ({
       </CartTitle>
 
       <IconsSection
+        id={id}
+        image={image}
+        title={title}
         customStyle={styles.iconsBox}
         iconSize={DIMENSIONS.height * 0.04}
         heartIcon={heartIcon}
         quickIcon={quickIcon}
+        type={type}
       />
     </View>
   );

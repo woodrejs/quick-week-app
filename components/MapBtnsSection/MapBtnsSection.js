@@ -13,14 +13,11 @@ const MapBtnsSection = ({ navigation }) => {
   const height = DIMENSIONS.height * 0.035;
   const dispatch = useDispatch();
   const goMenu = () => navigation.navigate("Menu");
+  const markersType = useSelector(({ markers }) => markers.type);
   const displayPlacesMarkers = () =>
-    dispatch(markersActions.setDisplayedMarkers("places"));
+    dispatch(markersActions.setTypeMarkers(true));
   const displayEventsMarkers = () =>
-    dispatch(markersActions.setDisplayedMarkers("events"));
-  const displayedMarkers = useSelector(
-    ({ markers }) => markers.displayedMarkers
-  );
-  const showColor = displayedMarkers === "places" ? true : false;
+    dispatch(markersActions.setTypeMarkers(false));
 
   return (
     <View style={styles.box}>
@@ -28,8 +25,8 @@ const MapBtnsSection = ({ navigation }) => {
         <Button
           width={width}
           height={height}
-          bckColor={showColor ? first : fourth}
-          txtColor={showColor ? fourth : third}
+          bckColor={markersType ? first : fourth}
+          txtColor={markersType ? fourth : third}
           title="places"
           radius={styles.firstBtn}
           onPress={displayPlacesMarkers}
@@ -37,8 +34,8 @@ const MapBtnsSection = ({ navigation }) => {
         <Button
           width={width}
           height={height}
-          bckColor={showColor ? fourth : first}
-          txtColor={showColor ? third : fourth}
+          bckColor={markersType ? fourth : first}
+          txtColor={markersType ? third : fourth}
           title="events"
           radius={styles.secoundBtn}
           onPress={displayEventsMarkers}

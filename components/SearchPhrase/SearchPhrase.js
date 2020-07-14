@@ -12,6 +12,7 @@ import { searchActions } from "../../actions";
 const SearchPhrase = ({ next }) => {
   const dispatch = useDispatch();
   const typeValue = useSelector(({ search }) => search.type);
+  const phraseStore = useSelector(({ search }) => search.phrase);
   const handleInput = (text) => {
     dispatch(searchActions.setSearchPhrase(text));
   };
@@ -22,7 +23,12 @@ const SearchPhrase = ({ next }) => {
   return (
     <View style={styles.mainBox}>
       <View style={styles.inputBox}>
-        <Input change={handleInput} label="phrase" size={styles.inputSize} />
+        <Input
+          change={handleInput}
+          label="phrase"
+          size={styles.inputSize}
+          value={phraseStore}
+        />
       </View>
       <View style={styles.checkboxsBox}>
         <Checkbox title="places" change={handleCheckbox} value={typeValue} />

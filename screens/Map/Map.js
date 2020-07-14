@@ -12,7 +12,7 @@ import CustomMap from "../../components/CustomMap";
 const Map = ({ navigation }) => {
   return (
     <View style={styles.screen}>
-      <CustomMap />
+      <CustomMap navigation={navigation} />
       <MapLogo />
       <MapBtnsSection navigation={navigation} />
       <MapDays />

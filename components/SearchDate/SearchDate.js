@@ -8,29 +8,25 @@ import Txt from "../../components/Txt";
 import styles from "./SearchDate.css";
 import { useSelector, useDispatch } from "react-redux";
 import { searchActions } from "../../actions";
-import setPlacesSearchResult from "../../functions/setPlacesSearchResult";
-import setEventsSearchResult from "../../functions/setEventsSearchResult";
+import createSearchResult from "../../functions/createSearchResult";
 
-const SearchDate = ({ navigation }) => {
+const SearchDate = ({ navigation, next }) => {
   const dispatch = useDispatch();
   const searchParam = useSelector(({ search }) => search);
   const { phrase, type, categories, dateFrom, dateTo } = searchParam;
   const categoryID = categories.map((category) => category.id).toString();
   const KEY = process.env.KEY;
 
-  const placesURL = `http://go.wroclaw.pl/api/v1.0/places/?key=${KEY}&q=${phrase}&category-id=${categoryID}`;
-  const eventsURL = `http://go.wroclaw.pl/api/v1.0/events/?key=${KEY}&q=${phrase}&category-id=${categoryID}&time-from=${dateFrom}&time-to=${dateTo}`;
+  const placesURL = `https://go.wroclaw.pl/api/v1.0/places/?key=${KEY}&q=${phrase}&category-id=${categoryID}`;
+  const eventsURL = `https://go.wroclaw.pl/api/v1.0/events/?key=${KEY}&q=${phrase}&category-id=${categoryID}&time-from=${dateFrom}&time-to=${dateTo}`;
+  const URL = type ? placesURL : eventsURL;
 
   const search = () => {
-    const URL = type ? placesURL : eventsURL;
-
     fetch(URL)
       .then((resp) => resp.json())
       .then((resp) => {
-        const result = type
-          ? setPlacesSearchResult(resp)
-          : setEventsSearchResult(resp);
-
+        const result = createSearchResult(resp, type);
+        next();
         dispatch(searchActions.setResults(result));
         navigation.navigate("Result");
       })

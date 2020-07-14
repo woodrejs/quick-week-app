@@ -1,32 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
 import Basic from "../../components/Basic";
 import Button from "../../components/Button";
 import COLORS from "../../constans/COLORS";
-import Steps from "../../components/Steps";
-import PasswordForm from "../../components/PasswordForm";
 import MailLoginForm from "../../components/MailLoginForm";
 import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const SignUpForm = ({ navigation }) => {
-  const [step, setStep] = useState(1);
-  const nextStep = () => {
-    if (step === 2) navigation.navigate("SignUpEnd");
-    else setStep(step + 1);
-  };
-  const prevStep = () => {
-    if (step === 1) navigation.navigate("SignUp", { screen: "SignUp" });
-    else setStep(step - 1);
-  };
   return (
     <Basic title="step one" size="sm" navigation={navigation}>
       <View style={styles.top}>
-        {step === 1 && <PasswordForm next={nextStep} />}
-        {step === 2 && <MailLoginForm next={nextStep} />}
+        <MailLoginForm navigation={navigation} />
       </View>
-      <View style={styles.mid}>
-        <Steps step={step} steps={2} />
-      </View>
+
       <View style={styles.bot}>
         <Button
           title="back"
@@ -34,7 +20,7 @@ const SignUpForm = ({ navigation }) => {
           width={DIMENSIONS.width * 0.75}
           bckColor={COLORS.fourth}
           txtColor={COLORS.third}
-          onPress={prevStep}
+          onPress={() => navigation.goBack()}
         />
       </View>
     </Basic>

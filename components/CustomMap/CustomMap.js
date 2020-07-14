@@ -2,31 +2,35 @@ import React from "react";
 import MapView from "react-native-map-clustering";
 import { useSelector, useDispatch } from "react-redux";
 import { mapActions } from "../../actions";
-import displayMarkers from "../../functions/displayMarkers";
-//
+import {
+  createEventsMarkers,
+  createPlacesMarkers,
+} from "../../functions/createMarkers";
+import COLORS from "../../constans/COLORS";
 import { Marker } from "react-native-maps";
 
-const CustomMap = () => {
+const CustomMap = ({ navigation }) => {
   const dispatch = useDispatch();
   const setCoords = (region) => dispatch(mapActions.setMapCoords(region));
-  const initialRegion = useSelector((state) => state.map.mapCoords);
-  const markers = displayMarkers();
-  const style = { width: "100%", height: "100%" };
 
-  //
-  const coords = useSelector((state) => state.map.mapCoords);
+  const coords = useSelector(({ map }) => map.mapCoords);
+  const type = useSelector(({ markers }) => markers.type);
 
+  const markers = type
+    ? createPlacesMarkers(navigation)
+    : createEventsMarkers(navigation);
   return (
     <MapView
-      style={style}
+      style={{ width: "100%", height: "100%" }}
       onRegionChangeComplete={setCoords}
-      initialRegion={initialRegion}
+      initialRegion={coords}
       maxZoom={14}
       moveOnMarkerPress={false}
+      clusterColor={type ? COLORS.first : COLORS.secound}
     >
       <Marker
         coordinate={{ latitude: coords.latitude, longitude: coords.longitude }}
-        pinColor={"yellow"}
+        pinColor={"green"}
       ></Marker>
       {markers}
     </MapView>

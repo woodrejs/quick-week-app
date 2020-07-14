@@ -1,25 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { View } from "react-native";
-import uuid from "uuid-random";
 import styles from "./Steps.css";
 
 const Steps = ({ step, steps }) => {
-  const [stepsArray, setStepsArray] = useState([]);
-  const emptyBall = { ...styles.ball, ...styles.empty };
-  const fillBall = { ...styles.ball, ...styles.fill };
+  const emptyBallStyle = { ...styles.ball, ...styles.empty };
+  const fillBallStyle = { ...styles.ball, ...styles.fill };
+  const emptyBall = <View style={emptyBallStyle}></View>;
+  const fillBall = <View style={fillBallStyle}></View>;
 
-  useEffect(() => {
-    const tmpArray = [];
-    for (let i = 0; i < steps; i++) {
-      const key = uuid();
-      step > i
-        ? tmpArray.push(<View key={key} style={fillBall}></View>)
-        : tmpArray.push(<View key={key} style={emptyBall}></View>);
-    }
-    setStepsArray(tmpArray);
-  }, [steps, step]);
-
-  return <View style={styles.box}>{stepsArray}</View>;
+  return (
+    <View style={styles.box}>
+      {fillBall}
+      {step > 1 ? fillBall : emptyBall}
+      {steps === 3 && (step === 3 ? fillBall : emptyBall)}
+    </View>
+  );
 };
 
 export default Steps;

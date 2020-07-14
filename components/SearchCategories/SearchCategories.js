@@ -27,9 +27,8 @@ const SearchCategories = ({ next }) => {
           horizontal={false}
           numColumns={1}
           data={categories}
-          renderItem={({ item }) => (
-            <Tile name={item.name} id={item.id} key={uuid()} />
-          )}
+          renderItem={({ item }) => <Tile name={item.name} id={item.id} />}
+          keyExtractor={() => uuid()}
         />
       </View>
       <View style={styles.btnBox}>

@@ -1,23 +1,20 @@
 import React from "react";
 import { ScrollView, View } from "react-native";
 import Basic from "../../components/Basic";
-import Cart from "../../components/Cart";
-import COLORS from "../../constans/COLORS";
-import BckImg from "../../img/test.jpg";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  createEventsCarts,
+  createPlacesCarts,
+} from "../../functions/createCarts";
 
 const Result = ({ navigation }) => {
-  const results = useSelector(({ search }) => search.results);
-  const carts = results.map((result) => (
-    <Cart
-      bckImg={result.image}
-      title={result.title}
-      heartIcon={true}
-      quickIcon={true}
-      color={COLORS.first}
-      onPress={() => navigation.navigate("Event")}
-    />
-  ));
+  const searchStore = useSelector(({ search }) => search);
+  const { type, results } = searchStore;
+  const dispatch = useDispatch();
+  const carts = type
+    ? createPlacesCarts(results, type, dispatch, navigation)
+    : createEventsCarts(results, type, dispatch, navigation);
+
   return (
     <Basic title="plan" size="lg" navigation={navigation}>
       <ScrollView style={{ marginTop: "10%" }}>

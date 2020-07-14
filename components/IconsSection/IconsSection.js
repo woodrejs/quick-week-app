@@ -3,17 +3,34 @@ import { View, TouchableOpacity, StyleSheet } from "react-native";
 import QwIcon from "../../img/logo/lg_white.svg";
 import HeartIcon from "../../img/heart/heart_white.svg";
 import DIMENSIONS from "../../constans/DIMENSIONS";
+import { useSelector } from "react-redux";
+import addToFavorites from "../../functions/addToFavorites";
 
-const IconsSection = ({ customStyle, iconSize, heartIcon, quickIcon }) => {
+const IconsSection = ({
+  customStyle,
+  iconSize,
+  heartIcon,
+  quickIcon,
+  id,
+  type,
+  image,
+  title,
+}) => {
+  const collectionName = `favorites${type ? "Places" : "Events"}`;
+  const data = { id, image, title };
+  const userId = useSelector(({ user }) => user.id);
+  const handleFavoriteIcon = () => addToFavorites(collectionName, userId, data);
+  const handleWeekPlanIcon = () => addToFavorites("WeekPlan", userId, data);
+
   return (
     <View style={{ ...styles.box, ...customStyle }}>
       {heartIcon && (
-        <TouchableOpacity style={styles.topIcon}>
+        <TouchableOpacity style={styles.topIcon} onPress={handleFavoriteIcon}>
           <HeartIcon height={iconSize} width={iconSize} />
         </TouchableOpacity>
       )}
       {quickIcon && (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleWeekPlanIcon}>
           <QwIcon height={iconSize} width={iconSize} />
         </TouchableOpacity>
       )}

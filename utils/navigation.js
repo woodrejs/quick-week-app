@@ -2,7 +2,20 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import * as Screens from "../../screens";
+import * as Screens from "../screens";
+
+const MapStack = createStackNavigator();
+const MapStackScreen = () => {
+  return (
+    <MapStack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Map"
+    >
+      <MapStack.Screen name="Map" component={Screens.Map} />
+      <MapStack.Screen name="Event" component={Screens.Event} />
+    </MapStack.Navigator>
+  );
+};
 
 const PlacesStack = createStackNavigator();
 const PlaccesStackScreen = () => {
@@ -103,9 +116,12 @@ const AuthStackScreen = () => {
   return (
     <AuthStack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName="Map"
+      initialRouteName="Welcome"
     >
-      <AuthStack.Screen name="Map" component={Screens.Map}></AuthStack.Screen>
+      <AuthStack.Screen
+        name="Map"
+        component={MapStackScreen}
+      ></AuthStack.Screen>
       <AuthStack.Screen
         name="Welcome"
         component={WelcomeStackScreen}

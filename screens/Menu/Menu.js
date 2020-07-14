@@ -6,8 +6,16 @@ import Txt from "../../components/Txt";
 import COLORS from "../../constans/COLORS";
 import styles from "./Menu.css";
 import DIMENSIONS from "../../constans/DIMENSIONS";
+import { auth } from "../../utils/firebase";
 
 const Menu = ({ navigation }) => {
+  const handleBtnSignIn = () => {
+    auth
+      .signOut()
+      .then(() => navigation.navigate("Welcome", { screen: "Welcome" }))
+      .catch((err) => alert(err));
+  };
+
   return (
     <Basic title="menu" size="lg" navigation={navigation}>
       <View style={styles.top}>
@@ -55,8 +63,8 @@ const Menu = ({ navigation }) => {
           height={DIMENSIONS.height * 0.05}
           width={DIMENSIONS.width * 0.75}
           bckColor={COLORS.fourth}
-          txtColor={COLORS.fifth}
-          onPress={() => navigation.navigate("Welcome", { screen: "Welcome" })}
+          txtColor={COLORS.sixth}
+          onPress={handleBtnSignIn}
         />
       </View>
     </Basic>

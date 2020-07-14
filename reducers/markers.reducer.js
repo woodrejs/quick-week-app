@@ -1,7 +1,7 @@
 import * as VARIABLES from "../constans/VARIABLES";
 
 const initState = {
-  displayedMarkers: "places",
+  type: true,
   places: [],
   events: [],
 };
@@ -12,8 +12,8 @@ const markers = (state = initState, action) => {
       return { ...state, places: [...state.places, ...action.payload] };
     case VARIABLES.SET_EVENTS_MARKERS:
       return { ...state, events: [...state.events, ...action.payload] };
-    case VARIABLES.SET_DISPLAYED_MARKERS:
-      return { ...state, displayedMarkers: action.payload };
+    case VARIABLES.SET_TYPE_MARKERS:
+      return { ...state, type: action.payload };
     default:
       return state;
   }

@@ -1,11 +1,16 @@
-import React from "react";
-import { View, ScrollView, ImageBackground } from "react-native";
+import React, { useRef } from "react";
+import {
+  View,
+  ScrollView,
+  ImageBackground,
+  Linking,
+  Alert,
+} from "react-native";
 import Basic from "../../components/Basic";
 import Txt from "../../components/Txt";
 import Button from "../../components/Button";
 import COLORS from "../../constans/COLORS";
 import Tag from "../../components/Tag";
-import BckImg from "../../img/test.jpg";
 import IconsSection from "../../components/IconsSection";
 import InfoIcon from "../../components/InfoIcon";
 import Clock1 from "../../img/icons/clock1_icon.svg";
@@ -13,55 +18,73 @@ import Gallery from "../../components/Gallery";
 import styles from "./Event.css";
 import BotBck from "../../img/backgrounds/botBck.svg";
 import DIMENSIONS from "../../constans/DIMENSIONS";
-
-const title = "jakis przykladowy tytul";
-const txt =
-  " Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. when an unknown printer took a galley of type and scrambled it to make a type specimen book";
+import { useSelector } from "react-redux";
+import uuid from "uuid-random";
+import { convertDescription } from "../../functions/convertData";
 
 const Event = ({ navigation }) => {
+  const eventStore = useSelector(({ events }) => events.event);
+  const ref = React.createRef();
+
+  console.log(eventStore.carParkAvailable);
+  console.log(eventStore.email);
+  console.log(eventStore.telephone);
+
+  const title = eventStore.title;
+  const mainImg = eventStore.images.length
+    ? { uri: eventStore.images[0].standard }
+    : null;
+  const street = eventStore.street ? eventStore.street : "brak";
+  const telephone = eventStore.telephone ? eventStore.telephone : "brak";
+  const email = eventStore.email ? eventStore.email : "brak";
+  const carPark = eventStore.carParkAvailable ? "dostępny" : "brak";
+  const images = eventStore.images;
+  const externalLink = eventStore.externalLink;
+  const longDescription = convertDescription(eventStore.longDescription);
+  const tags = eventStore.categories.map((category) => (
+    <Tag title={category.name} key={uuid()} />
+  ));
+
+  const handleButtonLink = async (url) => {
+    const supported = await Linking.canOpenURL(url);
+    if (supported) await Linking.openURL(url);
+    else Alert.alert(`Don't know how to open this URL: ${url}`);
+  };
+  const handleButtongoTop = () =>
+    ref.current.scrollResponderScrollTo({
+      x: 0,
+      y: 0,
+      animated: true,
+    });
+
   return (
     <Basic title="event" noBck={true} navigation={navigation}>
-      <ScrollView contentContainerStyle={styles.screen}>
+      <ScrollView contentContainerStyle={styles.screen} ref={ref}>
         <View style={styles.titleBox}>
           <Txt weight={700} customStyle={styles.title}>
             {title}
           </Txt>
         </View>
 
-        <View style={styles.tagsBox}>
-          <Tag title="tytul" />
-          <Tag title="tytul" />
-          <Tag title="tytul" />
-          <Tag title="tytul" />
-          <Tag title="tytul" />
-          <Tag title="tytul" />
-          <Tag title="tytul" />
-          <Tag title="tytul" />
-        </View>
+        <View style={styles.tagsBox}>{tags}</View>
 
         <View style={styles.imgBox}>
-          <ImageBackground source={BckImg} style={styles.img}>
+          <ImageBackground source={mainImg} style={styles.img}>
             <View style={styles.mask}></View>
             <IconsSection customStyle={styles.imgIconsBox} iconSize={30} />
           </ImageBackground>
         </View>
 
         <View style={styles.infoIconsBox}>
-          <InfoIcon icon={<Clock1 height={30} width={30} />} txt="21:00 " />
-          <InfoIcon icon={<Clock1 height={30} width={30} />} txt="20pln " />
-          <InfoIcon
-            icon={<Clock1 height={30} width={30} />}
-            txt="22-05-2020 "
-          />
-          <InfoIcon
-            icon={<Clock1 height={30} width={30} />}
-            txt="OBORNICKA 22/20 "
-          />
+          <InfoIcon icon={<Clock1 height={30} width={30} />} txt={telephone} />
+          <InfoIcon icon={<Clock1 height={30} width={30} />} txt={email} />
+          <InfoIcon icon={<Clock1 height={30} width={30} />} txt={carPark} />
+          <InfoIcon icon={<Clock1 height={30} width={30} />} txt={street} />
         </View>
 
         <View style={styles.txtBox}>
           <Txt weight={500} customstyle={styles.txt}>
-            {txt}
+            {longDescription}
           </Txt>
         </View>
 
@@ -74,10 +97,11 @@ const Event = ({ navigation }) => {
               width={DIMENSIONS.width * 0.9}
               bckColor={COLORS.fourth}
               txtColor={COLORS.third}
+              onPress={() => handleButtonLink(externalLink)}
             />
           </View>
           <View style={styles.galleryBox}>
-            <Gallery />
+            <Gallery data={images} />
           </View>
           <View style={styles.btnBox}>
             <Button
@@ -86,6 +110,7 @@ const Event = ({ navigation }) => {
               width={DIMENSIONS.width * 0.9}
               bckColor={COLORS.fourth}
               txtColor={COLORS.third}
+              onPress={handleButtongoTop}
             />
             <Button
               title="go back"

@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const styles = StyleSheet.create({
   top: {
@@ -21,6 +22,10 @@ const styles = StyleSheet.create({
     marginBottom: "10%",
   },
   inputBox: { marginBottom: 25 },
+  inputSize: {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.75,
+  },
 });
 
 export default styles;

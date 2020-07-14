@@ -1,47 +1,46 @@
 import * as VARIABLES from "../constans/VARIABLES";
+import {
+  convertEventMarker,
+  convertPlaceMarker,
+} from "../functions/convertData";
 
 export const setPlacesMarkers = (data) => {
-  const payload = data.map((item) => {
-    const { id, title, longDescription, address, location } = item;
+  const payload = data.reduce((array, item) => {
+    if ("title" in item)
+      if ("longDescription" in item)
+        if ("venue" in item)
+          if ("location" in item)
+            if ("address" in item)
+              if ("carParkAvailable" in item.venue)
+                if ("telephone" in item.venue)
+                  if ("email" in item.venue)
+                    array.push(convertPlaceMarker(item));
 
-    return {
-      id,
-      title,
-      longDescription,
-      street: address.street,
-      latitude: location.lattiude,
-      longitude: location.longitude,
-      type: "place",
-    };
-  });
+    return array;
+  }, []);
+
   return {
     type: VARIABLES.SET_PLACES_MARKERS,
     payload,
   };
 };
 export const setEventsMarkers = (data) => {
+  console.log(data);
   const payload = data.reduce((array, item) => {
     if ("events" in item)
-      if ("address" in item.events[0])
-        if ("location" in item.events[0])
-          if ("placeName" in item.events[0])
-            if ("lattiude" in item.events[0].location)
-              if ("endDate" in item.events[0]) {
-                const { id, title, longDescription } = item;
-                const events = item.events[0];
-                array.push({
-                  id,
-                  title,
-                  longDescription,
-                  street: events.address.street,
-                  latitude: events.location.lattiude,
-                  longitude: events.location.longitude,
-                  placeName: events.placeName,
-                  type: "event",
-                  startDate: events.startDate.slice(0, 10),
-                  endDate: events.endDate.slice(0, 10),
-                });
-              }
+      if ("longDescription" in item)
+        if ("address" in item.events[0])
+          if ("location" in item.events[0])
+            if ("placeName" in item.events[0])
+              if ("lattiude" in item.events[0].location)
+                if ("endDate" in item.events[0])
+                  if ("place" in item.events[0])
+                    if ("venue" in item.events[0].place)
+                      if ("carParkAvailable" in item.events[0].place.venue)
+                        if ("telephone" in item.events[0].place.venue)
+                          if ("email" in item.events[0].place.venue)
+                            array.push(convertEventMarker(item));
+
     return array;
   }, []);
 
@@ -50,7 +49,7 @@ export const setEventsMarkers = (data) => {
     payload,
   };
 };
-export const setDisplayedMarkers = (payload) => ({
-  type: VARIABLES.SET_DISPLAYED_MARKERS,
+export const setTypeMarkers = (payload) => ({
+  type: VARIABLES.SET_TYPE_MARKERS,
   payload,
 });
