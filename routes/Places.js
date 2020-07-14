@@ -1,16 +1,15 @@
-import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Places, Event } from "../screens";
 
-const screens = {
-  Places: {
-    screen: Places,
-  },
-  Event: {
-    screen: Event,
-  },
+const PlacesStack = createStackNavigator();
+const PlacesStackScreen = () => {
+  return (
+    <PlacesStack.Navigator>
+      <PlacesStack.Screen name="Places" component={Places} />
+      <PlacesStack.Screen name="Event" component={Event} />
+    </PlacesStack.Navigator>
+  );
 };
 
-const PlacesStack = createStackNavigator(screens);
-
-export default NavigationContainer(PlacesStack);
+export default PlacesStackScreen;

@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo } from "react";
 import { ScrollView, View } from "react-native";
-import Basic from "../../components/Basic";
 import { useSelector, useDispatch } from "react-redux";
 import { db } from "../../utils/firebase";
 import { favoritesActions } from "../../actions";
@@ -28,12 +27,12 @@ const Plan = ({ navigation }) => {
   );
 
   return (
-    <Basic title="plan" size="lg" navigation={navigation}>
-      <ScrollView style={{ marginTop: "10%" }}>
+    <View style={{ width: "100%", height: "100%" }}>
+      <ScrollView>
         {carts}
         <View style={{ height: 20 }}></View>
       </ScrollView>
-    </Basic>
+    </View>
   );
 };
 

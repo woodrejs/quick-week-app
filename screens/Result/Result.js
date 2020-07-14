@@ -16,12 +16,12 @@ const Result = ({ navigation }) => {
     : createEventsCarts(results, type, dispatch, navigation);
 
   return (
-    <Basic title="plan" size="lg" navigation={navigation}>
-      <ScrollView style={{ marginTop: "10%" }}>
+    <View style={{ width: "100%", height: "100%" }}>
+      <ScrollView>
         {carts}
         <View style={{ height: 20 }}></View>
       </ScrollView>
-    </Basic>
+    </View>
   );
 };
 

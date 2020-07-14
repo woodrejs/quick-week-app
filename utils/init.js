@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Navigation from "./navigation";
+//import Navigation from "./navigation";
 import setFonts from "./fonts";
 import Loading from "../components/Loading";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,6 +10,8 @@ import {
   storeEventsMarkers,
   storeUserInfo,
 } from "../functions/setInStore";
+import WelcomeStackScreen from "../routes/Welcome";
+import { NavigationContainer } from "@react-navigation/native";
 
 const Init = () => {
   const dispatch = useDispatch();
@@ -27,7 +29,12 @@ const Init = () => {
   }, []);
 
   if (isFontsLoaded && isPlacesMarkersLoaded && isCoordsLoaded)
-    return <Navigation />;
+    return (
+      <NavigationContainer>
+        <WelcomeStackScreen />
+      </NavigationContainer>
+    );
+  //return <Navigation />;
   else return <Loading />;
 };
 

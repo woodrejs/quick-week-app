@@ -17,7 +17,7 @@ const Menu = ({ navigation }) => {
   };
 
   return (
-    <Basic title="menu" size="lg" navigation={navigation}>
+    <View style={styles.screen}>
       <View style={styles.top}>
         <Button
           title="Map"
@@ -67,7 +67,7 @@ const Menu = ({ navigation }) => {
           onPress={handleBtnSignIn}
         />
       </View>
-    </Basic>
+    </View>
   );
 };
 

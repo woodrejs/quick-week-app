@@ -1,31 +1,23 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  screen: { width: "100%", height: "100%" },
   top: {
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    flex: 1,
-  },
-  mid: {
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    flex: 2,
-  },
-  bot: {
-    width: "100%",
+    flex: 3,
     alignItems: "center",
     justifyContent: "center",
+  },
+  mid: {
     flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  txt: {
-    fontSize: 12,
-    textTransform: "uppercase",
-    marginTop: "20%",
-    letterSpacing: 1,
-    marginBottom: "5%",
+  bot: {
+    flex: 4,
+    alignItems: "center",
+    justifyContent: "flex-start",
   },
+  btnBox: { marginVertical: "5%" },
 });
 
 export default styles;

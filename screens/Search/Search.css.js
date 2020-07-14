@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  screen: { width: "100%", height: "100%" },
   top: {
     flex: 6,
     width: "100%",

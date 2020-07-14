@@ -1,31 +1,18 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
 import { Menu } from "../screens";
-import MapStack from "./Map";
-import SearchStack from "./Search";
-import PlanStack from "./Plan";
-import PlacesStack from "./Places";
-import EventsStack from "./Events";
+import Header from "../components/Header";
 
-const MenuDrawerNavigator = createDrawerNavigator({
-  Menu: {
-    screen: Menu,
-  },
-  Map: {
-    screen: MapStack,
-  },
-  Search: {
-    screen: SearchStack,
-  },
-  Plan: {
-    screen: PlanStack,
-  },
-  Places: {
-    screen: PlacesStack,
-  },
-  Events: {
-    screen: EventsStack,
-  },
-});
-
-export default NavigationContainer(MenuDrawerNavigator);
+const MenuStack = createStackNavigator();
+const MenuStackScreen = () => {
+  return (
+    <MenuStack.Navigator>
+      <MenuStack.Screen
+        name="Menu"
+        component={Menu}
+        options={{ headerTitle: (props) => <Header {...props} /> }}
+      />
+    </MenuStack.Navigator>
+  );
+};
+export default MenuStackScreen;

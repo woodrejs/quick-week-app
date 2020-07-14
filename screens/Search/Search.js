@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import COLORS from "../../constans/COLORS";
-import Basic from "../../components/Basic";
 import Button from "../../components/Button";
 import styles from "./Search.css";
 import Steps from "../../components/Steps";
@@ -17,7 +16,7 @@ const Search = ({ navigation }) => {
   const goMenu = () => navigation.navigate("Menu", { screen: "Menu" });
 
   return (
-    <Basic title="search" size="sm" navigation={navigation}>
+    <View style={styles.screen}>
       <View style={styles.top}>
         {step === 1 && <SearchPhrase next={nextStep} />}
         {step === 2 && <SearchCategories next={nextStep} />}
@@ -36,7 +35,7 @@ const Search = ({ navigation }) => {
           onPress={step === 1 ? goMenu : prevStep}
         />
       </View>
-    </Basic>
+    </View>
   );
 };
 

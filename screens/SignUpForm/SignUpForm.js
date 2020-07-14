@@ -1,58 +1,84 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import Basic from "../../components/Basic";
 import Button from "../../components/Button";
 import COLORS from "../../constans/COLORS";
-import MailLoginForm from "../../components/MailLoginForm";
 import DIMENSIONS from "../../constans/DIMENSIONS";
+import Input from "../../components/Input";
+import { useSelector, useDispatch } from "react-redux";
+import { userActions } from "../../actions";
+import { auth } from "../../utils/firebase";
 
 const SignUpForm = ({ navigation }) => {
-  return (
-    <Basic title="step one" size="sm" navigation={navigation}>
-      <View style={styles.top}>
-        <MailLoginForm navigation={navigation} />
-      </View>
+  const dispatch = useDispatch();
+  const userStore = useSelector(({ user }) => user);
+  const { setUserMail, setUserPassword } = userActions;
+  const handleInputPassword = (val) => dispatch(setUserPassword(val));
+  const handleInputMail = (val) => dispatch(setUserMail(val));
+  const handleBtnSignIn = () => {
+    auth
+      .createUserWithEmailAndPassword(userStore.mail, userStore.password)
+      .then(() => {
+        dispatch(setUserPassword(null));
+        dispatch(setUserMail(null));
+        navigation.navigate("SignUpEnd");
+      })
+      .catch((err) => alert(err));
+  };
 
-      <View style={styles.bot}>
+  return (
+    <View style={styles.screen}>
+      <View style={styles.inputsBox}>
+        <View style={styles.inputBox}>
+          <Input
+            label="email"
+            size={styles.inputSize}
+            change={handleInputMail}
+            value={userStore.mail}
+          />
+        </View>
+        <View style={styles.inputBox}>
+          <Input
+            label="password"
+            size={styles.inputSize}
+            change={handleInputPassword}
+            value={userStore.password}
+          />
+        </View>
+      </View>
+      <View style={styles.btnBox}>
         <Button
-          title="back"
-          height={DIMENSIONS.height * 0.04}
+          title="sign in"
+          height={DIMENSIONS.height * 0.05}
           width={DIMENSIONS.width * 0.75}
-          bckColor={COLORS.fourth}
-          txtColor={COLORS.third}
-          onPress={() => navigation.goBack()}
+          bckColor={COLORS.first}
+          txtColor={COLORS.fourth}
+          onPress={handleBtnSignIn}
         />
       </View>
-    </Basic>
+    </View>
   );
 };
 
 export default SignUpForm;
 
 const styles = StyleSheet.create({
-  top: {
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 7,
-  },
-  mid: { flex: 1, justifyContent: "center", alignItems: "center" },
-  bot: {
+  screen: { width: "100%", height: "100%" },
+  inputsBox: {
     width: "100%",
     alignItems: "center",
-    justifyContent: "space-evenly",
-    flex: 2,
+    justifyContent: "flex-end",
+    flex: 5,
   },
-  box: {
+  inputBox: { marginBottom: 25 },
+  inputSize: {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.75,
+  },
+  btnBox: {
     width: "100%",
     alignItems: "center",
-    marginBottom: "5%",
-    justifyContent: "center",
-  },
-  checkBox: {
-    height: 40,
-    width: 280,
     justifyContent: "flex-start",
+    flex: 4,
+    marginTop: "10%",
   },
-  steps: { height: 40, width: 150, backgroundColor: "blue", borderRadius: 50 },
 });

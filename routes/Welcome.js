@@ -1,29 +1,27 @@
-import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import MenuDrawerNavigator from "./Menu";
+import DrawerScreen from "./Drawer";
+import React from "react";
 import { Welcome, Login, SignUp, SignUpForm, SignUpEnd } from "../screens";
 
-const screens = {
-  Welcome: {
-    screen: Welcome,
-  },
-  Login: {
-    screen: Login,
-  },
-  SignUp: {
-    screen: SignUp,
-  },
-  SignUpForm: {
-    screen: SignUpForm,
-  },
-  SignUpEnd: {
-    screen: SignUpEnd,
-  },
-  Menu: {
-    screen: MenuDrawerNavigator,
-  },
+const WelcomeStack = createStackNavigator();
+const WelcomeStackScreen = () => {
+  return (
+    <WelcomeStack.Navigator>
+      <WelcomeStack.Screen
+        name="Welcome"
+        component={Welcome}
+        options={{ headerShown: false }}
+      />
+      <WelcomeStack.Screen name="Login" component={Login} />
+      <WelcomeStack.Screen name="SignUp" component={SignUp} />
+      <WelcomeStack.Screen name="SignUpForm" component={SignUpForm} />
+      <WelcomeStack.Screen name="SignUpEnd" component={SignUpEnd} />
+      <WelcomeStack.Screen
+        name="Drawer"
+        component={DrawerScreen}
+        options={{ headerShown: false }}
+      />
+    </WelcomeStack.Navigator>
+  );
 };
-
-const WelcomeStack = createStackNavigator(screens);
-
-export default NavigationContainer(WelcomeStack);
+export default WelcomeStackScreen;

@@ -1,6 +1,7 @@
 import React from "react";
 import store from "./Store";
 import { Provider } from "react-redux";
+
 import Init from "./utils/init";
 
 const App = () => {
