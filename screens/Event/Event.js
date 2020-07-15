@@ -6,7 +6,6 @@ import {
   Linking,
   Alert,
 } from "react-native";
-import Basic from "../../components/Basic";
 import Txt from "../../components/Txt";
 import Button from "../../components/Button";
 import COLORS from "../../constans/COLORS";
@@ -58,7 +57,7 @@ const Event = ({ navigation }) => {
     });
 
   return (
-    <Basic title="event" noBck={true} navigation={navigation}>
+    <View>
       <ScrollView contentContainerStyle={styles.screen} ref={ref}>
         <View style={styles.titleBox}>
           <Txt weight={700} customStyle={styles.title}>
@@ -123,7 +122,7 @@ const Event = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
-    </Basic>
+    </View>
   );
 };
 

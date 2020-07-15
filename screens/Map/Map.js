@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import MapBtnsSection from "../../components/MapBtnsSection";
-import MapLogo from "../../components/MapLogo";
+
 import MapDays from "../../components/MapDays";
 import CustomMap from "../../components/CustomMap";
 
@@ -13,7 +13,7 @@ const Map = ({ navigation }) => {
   return (
     <View style={styles.screen}>
       <CustomMap navigation={navigation} />
-      <MapLogo />
+
       <MapBtnsSection navigation={navigation} />
       <MapDays />
     </View>

@@ -12,7 +12,7 @@ const MapBtnsSection = ({ navigation }) => {
   const width = DIMENSIONS.width * 0.2;
   const height = DIMENSIONS.height * 0.035;
   const dispatch = useDispatch();
-  const goMenu = () => navigation.navigate("Menu");
+
   const markersType = useSelector(({ markers }) => markers.type);
   const displayPlacesMarkers = () =>
     dispatch(markersActions.setTypeMarkers(true));
@@ -39,17 +39,6 @@ const MapBtnsSection = ({ navigation }) => {
           title="events"
           radius={styles.secoundBtn}
           onPress={displayEventsMarkers}
-        />
-      </View>
-      <View style={styles.botBox}>
-        <Button
-          width={width}
-          height={height}
-          bckColor={fourth}
-          txtColor={third}
-          title="menu"
-          radius={styles.firstBtn}
-          onPress={goMenu}
         />
       </View>
     </View>

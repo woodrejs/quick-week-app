@@ -1,6 +1,5 @@
 import React from "react";
 import { ScrollView, View } from "react-native";
-import Basic from "../../components/Basic";
 import { useSelector, useDispatch } from "react-redux";
 import {
   createEventsCarts,

@@ -4,14 +4,15 @@ import { Menu } from "../screens";
 import Header from "../components/Header";
 
 const MenuStack = createStackNavigator();
+const options = ({ navigation }) => {
+  return {
+    headerTitle: () => <Header navigation={navigation} />,
+  };
+};
 const MenuStackScreen = () => {
   return (
     <MenuStack.Navigator>
-      <MenuStack.Screen
-        name="Menu"
-        component={Menu}
-        options={{ headerTitle: (props) => <Header {...props} /> }}
-      />
+      <MenuStack.Screen name="Menu" component={Menu} options={options} />
     </MenuStack.Navigator>
   );
 };

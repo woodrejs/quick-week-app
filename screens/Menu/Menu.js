@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import Basic from "../../components/Basic";
+
 import Button from "../../components/Button";
 import Txt from "../../components/Txt";
 import COLORS from "../../constans/COLORS";
