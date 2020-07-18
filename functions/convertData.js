@@ -12,6 +12,7 @@ export const convertPlace = (obj) => {
     telephone: obj.venue.telephone,
     email: obj.venue.email,
     carParkAvailable: obj.venue.carParkAvailable,
+    type: true,
   };
 };
 
@@ -32,6 +33,7 @@ export const convertEvent = (obj) => {
     telephone: obj.place.venue.telephone,
     email: obj.place.venue.email,
     carParkAvailable: obj.place.venue.carParkAvailable,
+    type: false,
   };
 };
 

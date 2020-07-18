@@ -12,7 +12,7 @@ const PlanStackScreen = () => {
   };
   return (
     <PlanStack.Navigator>
-      <PlanStack.Screen name="Places" component={Plan} options={options} />
+      <PlanStack.Screen name="Plan" component={Plan} options={options} />
       <PlanStack.Screen name="Event" component={Event} />
     </PlanStack.Navigator>
   );

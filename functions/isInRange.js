@@ -10,7 +10,7 @@ export const isCoordsInRange = (coords, long, latt) => {
     if (latt > LAT_MIN && latt < LAT_MAX) return true;
   } else return false;
 };
-
+/*
 export const isDateInRange = (date, obj) => {
   if (obj.type === "event") {
     const DATE = new Date(date).getTime();
@@ -19,3 +19,4 @@ export const isDateInRange = (date, obj) => {
     return DATE_MIN > DATE || DATE > DATE_MAX ? false : true;
   } else return true;
 };
+*/

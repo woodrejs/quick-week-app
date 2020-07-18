@@ -1,4 +1,10 @@
-import * as VARIABLES from "../constans/VARIABLES";
+import {
+  SET_PLACES_MARKERS,
+  SET_EVENTS_MARKERS,
+  SET_TYPE_MARKERS,
+  PLACES_MARKERS_LOADED,
+  EVENTS_MARKERS_LOADED,
+} from "../constans/VARIABLES";
 import {
   convertEventMarker,
   convertPlaceMarker,
@@ -8,24 +14,24 @@ export const setPlacesMarkers = (data) => {
   const payload = data.reduce((array, item) => {
     if ("title" in item)
       if ("longDescription" in item)
-        if ("venue" in item)
-          if ("location" in item)
-            if ("address" in item)
-              if ("carParkAvailable" in item.venue)
-                if ("telephone" in item.venue)
-                  if ("email" in item.venue)
-                    array.push(convertPlaceMarker(item));
+        if ("mainImage" in item)
+          if ("venue" in item)
+            if ("location" in item)
+              if ("address" in item)
+                if ("carParkAvailable" in item.venue)
+                  if ("telephone" in item.venue)
+                    if ("email" in item.venue)
+                      array.push(convertPlaceMarker(item));
 
     return array;
   }, []);
 
   return {
-    type: VARIABLES.SET_PLACES_MARKERS,
+    type: SET_PLACES_MARKERS,
     payload,
   };
 };
 export const setEventsMarkers = (data) => {
-  console.log(data);
   const payload = data.reduce((array, item) => {
     if ("events" in item)
       if ("longDescription" in item)
@@ -45,11 +51,19 @@ export const setEventsMarkers = (data) => {
   }, []);
 
   return {
-    type: VARIABLES.SET_EVENTS_MARKERS,
+    type: SET_EVENTS_MARKERS,
     payload,
   };
 };
 export const setTypeMarkers = (payload) => ({
-  type: VARIABLES.SET_TYPE_MARKERS,
+  type: SET_TYPE_MARKERS,
   payload,
+});
+export const setPlacesMarkersLoaded = () => ({
+  type: PLACES_MARKERS_LOADED,
+  payload: true,
+});
+export const setEventsMarkersLoaded = () => ({
+  type: EVENTS_MARKERS_LOADED,
+  payload: true,
 });

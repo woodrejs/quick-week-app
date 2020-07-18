@@ -1,8 +1,8 @@
 import DATE from "../constans/DATE";
 import { auth } from "../utils/firebase";
 import {
-  eventsActions,
-  appActions,
+  eventActions,
+  categoriesActions,
   mapActions,
   markersActions,
   userActions,
@@ -16,20 +16,20 @@ import {
 
 export const storePlace = async (id, dispatch) => {
   const place = await fetchPlace(id);
-  dispatch(eventsActions.setEvent(place));
+  dispatch(eventActions.setEvent(place));
 };
 
 export const storeEvent = async (id, dispatch) => {
-  const place = await fetchEvent(id);
-  dispatch(eventsActions.setEvent(place));
+  const data = await fetchEvent(id);
+  dispatch(eventActions.setEvent(data));
 };
 
 export const storeCategories = async (dispatch) => {
   const placesCategories = await fetchCategories(true);
   const eventsCategories = await fetchCategories(false);
 
-  dispatch(appActions.setPlacesCategories(placesCategories));
-  dispatch(appActions.setEventsCategories(eventsCategories));
+  dispatch(categoriesActions.setPlacesCategories(placesCategories));
+  dispatch(categoriesActions.setEventsCategories(eventsCategories));
 };
 
 export const storeInitCoords = async (dispatch) => {
@@ -41,8 +41,8 @@ export const storeInitCoords = async (dispatch) => {
         latitudeDelta: 0.01,
         longitudeDelta: 0.05,
       };
-      dispatch(mapActions.setMapCoords(initialCoords));
-      dispatch(appActions.setCoordsLoaded());
+      dispatch(mapActions.setCoords(initialCoords));
+      dispatch(mapActions.setCoordsLoaded(true));
     },
     (error) => alert(error.message),
     { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
@@ -54,7 +54,7 @@ export const storePlacesMarkers = async (dispatch) => {
   const URL = `https://go.wroclaw.pl/api/v1.0/places/?key=${KEY}&page-size=200&type-id=10`;
   const markers = await fetchMarkers(URL);
   dispatch(markersActions.setPlacesMarkers(markers));
-  dispatch(appActions.setPlacesMarkersLoaded());
+  dispatch(markersActions.setPlacesMarkersLoaded());
 };
 
 export const storeEventsMarkers = async (dispatch) => {
@@ -63,18 +63,17 @@ export const storeEventsMarkers = async (dispatch) => {
   const TO = DATE.to;
   const URL = `https://go.wroclaw.pl/api/v1.0/offers/?key=${KEY}&time-from=${FROM}&time-to=${TO}&page-size=200`;
   const markers = await fetchMarkers(URL);
-  console.log(markers);
   dispatch(markersActions.setEventsMarkers(markers));
-  dispatch(appActions.setEventsMarkersLoaded());
+  dispatch(markersActions.setEventsMarkersLoaded());
 };
 
 export const storeUserInfo = (dispatch) => {
   auth.onAuthStateChanged((user) => {
     if (user) {
-      dispatch(userActions.setUserLogin());
+      dispatch(userActions.setUserLogged(true));
       dispatch(userActions.setUserId(user.uid));
     } else {
-      dispatch(userActions.setUserLogout());
+      dispatch(userActions.setUserLogged(false));
       dispatch(userActions.setUserId(null));
     }
   });

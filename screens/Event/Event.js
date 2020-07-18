@@ -22,12 +22,8 @@ import uuid from "uuid-random";
 import { convertDescription } from "../../functions/convertData";
 
 const Event = ({ navigation }) => {
-  const eventStore = useSelector(({ events }) => events.event);
+  const eventStore = useSelector(({ event }) => event.data);
   const ref = React.createRef();
-
-  console.log(eventStore.carParkAvailable);
-  console.log(eventStore.email);
-  console.log(eventStore.telephone);
 
   const title = eventStore.title;
   const mainImg = eventStore.images.length
@@ -70,7 +66,16 @@ const Event = ({ navigation }) => {
         <View style={styles.imgBox}>
           <ImageBackground source={mainImg} style={styles.img}>
             <View style={styles.mask}></View>
-            <IconsSection customStyle={styles.imgIconsBox} iconSize={30} />
+            <IconsSection
+              customStyle={styles.imgIconsBox}
+              iconSize={30}
+              id={eventStore.id}
+              heartIcon={true}
+              quickIcon={!eventStore.type}
+              type={eventStore.type} /// do zrobienia
+              image={eventStore.images[0].standard}
+              title={eventStore.title}
+            />
           </ImageBackground>
         </View>
 
@@ -110,14 +115,6 @@ const Event = ({ navigation }) => {
               bckColor={COLORS.fourth}
               txtColor={COLORS.third}
               onPress={handleButtongoTop}
-            />
-            <Button
-              title="go back"
-              height={DIMENSIONS.height * 0.05}
-              width={DIMENSIONS.width * 0.9}
-              bckColor={COLORS.fourth}
-              txtColor={COLORS.third}
-              onPress={() => navigation.goBack()}
             />
           </View>
         </View>

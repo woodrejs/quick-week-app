@@ -1,6 +1,6 @@
 import { useFonts } from "@use-expo/font";
 import { useDispatch } from "react-redux";
-import { appActions } from "../actions";
+import { fontsActions } from "../actions";
 
 const setFonts = (fontsLoaded) => {
   let [isLoaded] = useFonts({
@@ -10,6 +10,6 @@ const setFonts = (fontsLoaded) => {
   });
   const dispatch = useDispatch();
 
-  if (!fontsLoaded && isLoaded) dispatch(appActions.setFontsLoaded());
+  if (!fontsLoaded && isLoaded) dispatch(fontsActions.setFontsLoaded());
 };
 export default setFonts;

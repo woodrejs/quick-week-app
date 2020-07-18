@@ -13,7 +13,7 @@ const MapBtnsSection = ({ navigation }) => {
   const height = DIMENSIONS.height * 0.035;
   const dispatch = useDispatch();
 
-  const markersType = useSelector(({ markers }) => markers.type);
+  const markersType = useSelector(({ markers }) => markers.displayedType);
   const displayPlacesMarkers = () =>
     dispatch(markersActions.setTypeMarkers(true));
   const displayEventsMarkers = () =>

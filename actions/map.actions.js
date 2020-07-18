@@ -1,20 +1,11 @@
-import * as VARIABLES from "../constans/VARIABLES";
+import { COORDS_LOADED, SET_COORDS } from "../constans/VARIABLES";
 
-export const incrementDate = (date) => ({
-  type: VARIABLES.INCREMENT_DATE,
-  date,
-});
-export const decrementDate = (date) => ({
-  type: VARIABLES.DECREMENT_DATE,
-  date,
-});
-export const setMapCoords = (payload) => ({
-  type: VARIABLES.SET_MAP_COORDINATES,
+export const setCoords = (payload) => ({
+  type: SET_COORDS,
   payload,
 });
-export const setInitialRegion = () => ({
-  type: VARIABLES.SET_INITIAL_REGION,
+
+export const setCoordsLoaded = (payload) => ({
+  type: COORDS_LOADED,
   payload,
 });
-export const setPlaces = () => ({ type: VARIABLES.SET_PLACES });
-export const setEvents = () => ({ type: VARIABLES.SET_EVENTS });

@@ -11,14 +11,15 @@ import { Marker } from "react-native-maps";
 
 const CustomMap = ({ navigation }) => {
   const dispatch = useDispatch();
-  const setCoords = (region) => dispatch(mapActions.setMapCoords(region));
+  const setCoords = (region) => dispatch(mapActions.setCoords(region));
 
-  const coords = useSelector(({ map }) => map.mapCoords);
-  const type = useSelector(({ markers }) => markers.type);
+  const coords = useSelector(({ map }) => map.coords);
+  const type = useSelector(({ markers }) => markers.displayedType);
 
   const markers = type
     ? createPlacesMarkers(navigation)
     : createEventsMarkers(navigation);
+
   return (
     <MapView
       style={{ width: "100%", height: "100%" }}

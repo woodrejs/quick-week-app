@@ -1,19 +1,19 @@
-import * as VARIABLES from "../constans/VARIABLES";
+import {
+  SET_FAVORITES_EVENTS,
+  SET_FAVORITES_PLACES,
+} from "../constans/VARIABLES";
 
 const initState = {
   places: [],
   events: [],
-  planEvents: [],
 };
 
 const favorites = (state = initState, action) => {
   switch (action.type) {
-    case VARIABLES.SET_FAVORITES_PLACES:
+    case SET_FAVORITES_PLACES:
       return { ...state, places: action.payload };
-    case VARIABLES.SET_FAVORITES_EVENTS:
+    case SET_FAVORITES_EVENTS:
       return { ...state, events: action.payload };
-    case VARIABLES.SET_PLAN_EVENTS:
-      return { ...state, planEvents: action.payload };
     default:
       return state;
   }

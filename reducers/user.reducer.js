@@ -1,22 +1,25 @@
-import * as VARIABLES from "../constans/VARIABLES";
+import {
+  SET_USER_PASSWORD,
+  SET_USER_MAIL,
+  SET_USER_ID,
+  SET_USER_LOGGED,
+} from "../constans/VARIABLES";
 
 const initState = {
-  isLogged: false,
-  password: null,
-  mail: null,
+  password: "Konik18",
+  mail: "M@wp.pl",
   id: null,
+  logged: false,
 };
 const user = (state = initState, action) => {
   switch (action.type) {
-    case VARIABLES.SET_USER_PASSWORD:
+    case SET_USER_PASSWORD:
       return { ...state, password: action.payload };
-    case VARIABLES.SET_USER_MAIL:
+    case SET_USER_MAIL:
       return { ...state, mail: action.payload };
-    case VARIABLES.SET_USER_LOGIN:
-      return { ...state, isLogged: action.payload };
-    case VARIABLES.SET_USER_LOGOUT:
-      return { ...state, isLogged: action.payload };
-    case VARIABLES.SET_USER_ID:
+    case SET_USER_LOGGED:
+      return { ...state, logged: action.payload };
+    case SET_USER_ID:
       return { ...state, id: action.payload };
     default:
       return state;

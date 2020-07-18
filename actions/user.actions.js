@@ -1,22 +1,24 @@
-import * as VARIABLES from "../constans/VARIABLES";
+import {
+  SET_USER_PASSWORD,
+  SET_USER_MAIL,
+  SET_USER_ID,
+  SET_USER_LOGGED,
+} from "../constans/VARIABLES";
 
 export const setUserPassword = (payload) => ({
-  type: VARIABLES.SET_USER_PASSWORD,
+  type: SET_USER_PASSWORD,
   payload,
 });
 export const setUserMail = (payload) => ({
-  type: VARIABLES.SET_USER_MAIL,
+  type: SET_USER_MAIL,
   payload,
 });
-export const setUserLogin = () => ({
-  type: VARIABLES.SET_USER_LOGIN,
-  payload: true,
-});
-export const setUserLogout = (payload) => ({
-  type: VARIABLES.SET_USER_LOGOUT,
-  payload: false,
-});
+
 export const setUserId = (payload) => ({
-  type: VARIABLES.SET_USER_ID,
+  type: SET_USER_ID,
+  payload,
+});
+export const setUserLogged = (payload) => ({
+  type: SET_USER_LOGGED,
   payload,
 });

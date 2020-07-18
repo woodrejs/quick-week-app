@@ -1,17 +1,21 @@
 import * as mapActions from "./map.actions";
-import * as appActions from "./app.actions";
+import * as categoriesActions from "./categories.actions";
 import * as markersActions from "./markers.actions";
 import * as searchActions from "./search.actions";
-import * as eventsActions from "./events.actions";
 import * as userActions from "./user.actions";
 import * as favoritesActions from "./favorites.actions";
+import * as fontsActions from "./fonts.actions";
+import * as eventActions from "./event.actions";
+import * as planActions from "./plan.actions";
 
 export {
   mapActions,
-  appActions,
+  categoriesActions,
   markersActions,
   searchActions,
-  eventsActions,
   userActions,
   favoritesActions,
+  fontsActions,
+  eventActions,
+  planActions,
 };

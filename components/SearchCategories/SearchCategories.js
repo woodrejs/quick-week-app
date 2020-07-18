@@ -11,8 +11,8 @@ import uuid from "uuid-random";
 
 const SearchCategories = ({ next }) => {
   const searchType = useSelector(({ search }) => search.type);
-  const placesCategories = useSelector(({ app }) => app.placesCategories);
-  const eventsCategories = useSelector(({ app }) => app.eventsCategories);
+  const placesCategories = useSelector(({ app }) => app.places);
+  const eventsCategories = useSelector(({ app }) => app.events);
   const categories = searchType ? placesCategories : eventsCategories;
 
   return (

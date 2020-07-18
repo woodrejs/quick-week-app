@@ -1,30 +1,34 @@
-import * as VARIABLES from "../constans/VARIABLES";
+import {
+  SET_SEARCH_PHRASE,
+  SET_SEARCH_TYPE,
+  SET_SEARCH_CATEGORIES,
+  SET_SEARCH_DATE_FROM,
+  SET_SEARCH_DATE_TO,
+  SET_SEARCH_RESULTS,
+} from "../constans/VARIABLES";
 
 export const setSearchPhrase = (payload) => ({
-  type: VARIABLES.SET_SEARCH_PHRASE,
+  type: SET_SEARCH_PHRASE,
   payload,
 });
 export const setSearchType = (payload) => ({
-  type: VARIABLES.SET_SEARCH_TYPE,
+  type: SET_SEARCH_TYPE,
   payload,
 });
 export const setSearchCategories = (payload) => ({
-  type: VARIABLES.SET_SEARCH_CATEGORIES,
+  type: SET_SEARCH_CATEGORIES,
   payload,
 });
 export const setSearchDateFrom = (payload) => ({
-  type: VARIABLES.SET_SEARCH_DATE_FROM,
+  type: SET_SEARCH_DATE_FROM,
   payload,
 });
 export const setSearchDateTo = (payload) => ({
-  type: VARIABLES.SET_SEARCH_DATE_TO,
+  type: SET_SEARCH_DATE_TO,
   payload,
 });
-export const setStep = (payload) => ({
-  type: VARIABLES.SET_STEP,
-  payload,
-});
+
 export const setResults = (payload) => ({
-  type: VARIABLES.SET_RESULTS,
+  type: SET_SEARCH_RESULTS,
   payload,
 });

@@ -1,6 +1,13 @@
-import * as VARIABLES from "../constans/VARIABLES";
+import {
+  SET_SEARCH_PHRASE,
+  SET_SEARCH_TYPE,
+  SET_SEARCH_CATEGORIES,
+  SET_SEARCH_DATE_FROM,
+  SET_SEARCH_DATE_TO,
+  SET_SEARCH_RESULTS,
+} from "../constans/VARIABLES";
+
 const initState = {
-  step: 1,
   phrase: "",
   type: true,
   categories: [],
@@ -11,19 +18,17 @@ const initState = {
 
 const search = (state = initState, action) => {
   switch (action.type) {
-    case VARIABLES.SET_SEARCH_PHRASE:
+    case SET_SEARCH_PHRASE:
       return { ...state, phrase: action.payload };
-    case VARIABLES.SET_SEARCH_TYPE:
+    case SET_SEARCH_TYPE:
       return { ...state, type: action.payload };
-    case VARIABLES.SET_SEARCH_CATEGORIES:
+    case SET_SEARCH_CATEGORIES:
       return { ...state, categories: action.payload };
-    case VARIABLES.SET_SEARCH_DATE_FROM:
+    case SET_SEARCH_DATE_FROM:
       return { ...state, dateFrom: action.payload };
-    case VARIABLES.SET_SEARCH_DATE_TO:
+    case SET_SEARCH_DATE_TO:
       return { ...state, dateTo: action.payload };
-    case VARIABLES.SET_STEP:
-      return { ...state, step: action.payload };
-    case VARIABLES.SET_RESULTS:
+    case SET_SEARCH_RESULTS:
       return { ...state, results: action.payload };
     default:
       return state;

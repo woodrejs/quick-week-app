@@ -1,18 +1,25 @@
 import React from "react";
 import { View } from "react-native";
-
+import { useDispatch } from "react-redux";
 import Button from "../../components/Button";
 import Txt from "../../components/Txt";
 import COLORS from "../../constans/COLORS";
 import styles from "./Menu.css";
 import DIMENSIONS from "../../constans/DIMENSIONS";
 import { auth } from "../../utils/firebase";
+import { userActions } from "../../actions";
 
 const Menu = ({ navigation }) => {
+  const dispatch = useDispatch();
+
   const handleBtnSignIn = () => {
     auth
       .signOut()
-      .then(() => navigation.navigate("Welcome", { screen: "Welcome" }))
+      .then(() => {
+        dispatch(userActions.setUserPassword(""));
+        dispatch(userActions.setUserMail(""));
+        navigation.navigate("Welcome", { screen: "Welcome" });
+      })
       .catch((err) => alert(err));
   };
 

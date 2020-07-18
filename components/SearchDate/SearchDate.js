@@ -9,16 +9,21 @@ import styles from "./SearchDate.css";
 import { useSelector, useDispatch } from "react-redux";
 import { searchActions } from "../../actions";
 import createSearchResult from "../../functions/createSearchResult";
+import DATE from "../../constans/DATE";
 
 const SearchDate = ({ navigation, next }) => {
   const dispatch = useDispatch();
+  const dates = useSelector(({ map }) => map);
   const searchParam = useSelector(({ search }) => search);
   const { phrase, type, categories, dateFrom, dateTo } = searchParam;
   const categoryID = categories.map((category) => category.id).toString();
   const KEY = process.env.KEY;
 
+  const FROM = dateFrom ? dateFrom : DATE.from;
+  const TO = dateTo ? dateTo : DATE.to;
+
   const placesURL = `https://go.wroclaw.pl/api/v1.0/places/?key=${KEY}&q=${phrase}&category-id=${categoryID}`;
-  const eventsURL = `https://go.wroclaw.pl/api/v1.0/events/?key=${KEY}&q=${phrase}&category-id=${categoryID}&time-from=${dateFrom}&time-to=${dateTo}`;
+  const eventsURL = `https://go.wroclaw.pl/api/v1.0/events/?key=${KEY}&q=${phrase}&category-id=${categoryID}&time-from=${FROM}&time-to=${TO}`;
   const URL = type ? placesURL : eventsURL;
 
   const search = () => {
@@ -28,6 +33,11 @@ const SearchDate = ({ navigation, next }) => {
         const result = createSearchResult(resp, type);
         next();
         dispatch(searchActions.setResults(result));
+        dispatch(searchActions.setSearchDateFrom(null));
+        dispatch(searchActions.setSearchDateTo(null));
+        dispatch(searchActions.setSearchPhrase(""));
+        dispatch(searchActions.setSearchCategories([]));
+
         navigation.navigate("Result");
       })
       .catch((err) => console.log(err));

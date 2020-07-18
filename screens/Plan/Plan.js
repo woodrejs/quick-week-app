@@ -2,15 +2,14 @@ import React, { useEffect, useMemo } from "react";
 import { ScrollView, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { db } from "../../utils/firebase";
-import { favoritesActions } from "../../actions";
+import { planActions } from "../../actions";
 import { createPlanCarts } from "../../functions/createCarts";
 
 const Plan = ({ navigation }) => {
   const dispatch = useDispatch();
   const userId = useSelector(({ user }) => user.id);
   const weekPlanEvents = useSelector(({ favorites }) => favorites.planEvents);
-  const setDatainStore = (data) =>
-    dispatch(favoritesActions.setPlanEvents(data));
+  const setDatainStore = (data) => dispatch(planActions.setPlanEvents(data));
 
   useEffect(() => {
     db.collection("WeekPlan")

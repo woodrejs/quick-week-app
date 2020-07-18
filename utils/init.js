@@ -15,10 +15,11 @@ import { NavigationContainer } from "@react-navigation/native";
 
 const Init = () => {
   const dispatch = useDispatch();
-  const app = useSelector(({ app }) => app);
-  const { isFontsLoaded, isCoordsLoaded, isPlacesMarkersLoaded } = app;
+  const coordsLoaded = useSelector(({ map }) => map.coordsLoaded);
+  const placesLoaded = useSelector(({ markers }) => markers.placesLoaded);
+  const fontsLoaded = useSelector(({ fonts }) => fonts.fontsLoaded);
 
-  setFonts(isFontsLoaded);
+  setFonts(fontsLoaded);
 
   useEffect(() => {
     storeUserInfo(dispatch);
@@ -28,7 +29,7 @@ const Init = () => {
     storeEventsMarkers(dispatch);
   }, []);
 
-  if (isFontsLoaded && isPlacesMarkersLoaded && isCoordsLoaded)
+  if (fontsLoaded && placesLoaded && coordsLoaded)
     return (
       <NavigationContainer>
         <WelcomeStackScreen />

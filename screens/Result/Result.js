@@ -11,8 +11,8 @@ const Result = ({ navigation }) => {
   const { type, results } = searchStore;
   const dispatch = useDispatch();
   const carts = type
-    ? createPlacesCarts(results, type, dispatch, navigation)
-    : createEventsCarts(results, type, dispatch, navigation);
+    ? createPlacesCarts(results, type, dispatch, navigation, true)
+    : createEventsCarts(results, type, dispatch, navigation, true);
 
   return (
     <View style={{ width: "100%", height: "100%" }}>

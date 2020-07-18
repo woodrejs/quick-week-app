@@ -1,10 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-import TopBar from "../TopBar";
+
 import LogoBck from "../../img/logo/lg_red.svg";
 import SmLight from "../../img/backgrounds/smLight.svg";
-
-//dodac islogged do stora !!!!!!!!!!!!!!
 
 const MenuScreen = ({ title, children }) => {
   return (
@@ -103,11 +101,3 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
 });
-/*
-  <View style={styles.screen}>
-      <View style={styles.bar}>
-        <TopBar title={title} isLogged={true} />
-      </View>
-      <View style={styles.container}>{children}</View>
-    </View>
-    */

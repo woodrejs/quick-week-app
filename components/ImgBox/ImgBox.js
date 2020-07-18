@@ -6,9 +6,9 @@ import {
   StyleSheet,
 } from "react-native";
 
-const ImgBox = ({ onPress, img, children }) => {
+const ImgBox = ({ onPress, img, children, onLongPress }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} onLongPress={onLongPress}>
       <ImageBackground source={{ uri: img }} style={styles.box}>
         <View style={styles.mask}></View>
         <View style={styles.content}>{children}</View>
