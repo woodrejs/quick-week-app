@@ -11,6 +11,11 @@ const txt_2 = "you have sign up to quick week app";
 const txt_3 = "now you can search and track your favorites places and events";
 
 const SignUpEnd = ({ navigation }) => {
+  const primaryBtn = {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.75,
+    backgroundColor: COLORS.first,
+  };
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
@@ -28,9 +33,7 @@ const SignUpEnd = ({ navigation }) => {
         <View style={styles.btnBox}>
           <Button
             title="start"
-            height={DIMENSIONS.height * 0.05}
-            width={DIMENSIONS.width * 0.75}
-            bckColor={COLORS.first}
+            customStyle={primaryBtn}
             txtColor={COLORS.fourth}
             onPress={() => navigation.navigate("Drawer")}
           />

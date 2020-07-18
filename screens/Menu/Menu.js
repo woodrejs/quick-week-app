@@ -22,23 +22,34 @@ const Menu = ({ navigation }) => {
       })
       .catch((err) => alert(err));
   };
+  const primaryBtn = {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.75,
+    backgroundColor: COLORS.first,
+  };
+  const secoundaryBtn = {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.75,
+    backgroundColor: COLORS.secound,
+  };
+  const logOutBtn = {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.75,
+    backgroundColor: COLORS.fourth,
+  };
 
   return (
     <View style={styles.screen}>
       <View style={styles.top}>
         <Button
           title="Map"
-          height={DIMENSIONS.height * 0.05}
-          width={DIMENSIONS.width * 0.75}
-          bckColor={COLORS.first}
+          customStyle={primaryBtn}
           txtColor={COLORS.fourth}
           onPress={() => navigation.navigate("Map")}
         />
         <Button
           title="week plan"
-          height={DIMENSIONS.height * 0.05}
-          width={DIMENSIONS.width * 0.75}
-          bckColor={COLORS.first}
+          customStyle={primaryBtn}
           txtColor={COLORS.fourth}
           onPress={() => navigation.navigate("Plan")}
         />
@@ -49,17 +60,13 @@ const Menu = ({ navigation }) => {
         </Txt>
         <Button
           title="my events"
-          height={DIMENSIONS.height * 0.05}
-          width={DIMENSIONS.width * 0.75}
-          bckColor={COLORS.secound}
+          customStyle={secoundaryBtn}
           txtColor={COLORS.fourth}
           onPress={() => navigation.navigate("Events")}
         />
         <Button
           title="my places"
-          height={DIMENSIONS.height * 0.05}
-          width={DIMENSIONS.width * 0.75}
-          bckColor={COLORS.secound}
+          customStyle={secoundaryBtn}
           txtColor={COLORS.fourth}
           onPress={() => navigation.navigate("Places")}
         />
@@ -67,9 +74,7 @@ const Menu = ({ navigation }) => {
       <View style={styles.bot}>
         <Button
           title="log out"
-          height={DIMENSIONS.height * 0.05}
-          width={DIMENSIONS.width * 0.75}
-          bckColor={COLORS.fourth}
+          customStyle={logOutBtn}
           txtColor={COLORS.sixth}
           onPress={handleBtnSignIn}
         />

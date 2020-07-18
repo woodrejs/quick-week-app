@@ -19,7 +19,11 @@ const SearchPhrase = ({ next }) => {
   const handleCheckbox = () => {
     dispatch(searchActions.setSearchType(!typeValue));
   };
-
+  const primaryBtn = {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.75,
+    backgroundColor: COLORS.first,
+  };
   return (
     <View style={styles.mainBox}>
       <View style={styles.inputBox}>
@@ -37,9 +41,7 @@ const SearchPhrase = ({ next }) => {
       <View style={styles.btnBox}>
         <Button
           title="next"
-          height={DIMENSIONS.height * 0.05}
-          width={DIMENSIONS.width * 0.75}
-          bckColor={COLORS.first}
+          customStyle={primaryBtn}
           txtColor={COLORS.fourth}
           onPress={next}
         />

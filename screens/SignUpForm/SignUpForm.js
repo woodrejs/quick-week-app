@@ -24,7 +24,11 @@ const SignUpForm = ({ navigation }) => {
       })
       .catch((err) => alert(err));
   };
-
+  const primaryBtn = {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.75,
+    backgroundColor: COLORS.first,
+  };
   return (
     <View style={styles.screen}>
       <View style={styles.inputsBox}>
@@ -48,9 +52,7 @@ const SignUpForm = ({ navigation }) => {
       <View style={styles.btnBox}>
         <Button
           title="sign in"
-          height={DIMENSIONS.height * 0.05}
-          width={DIMENSIONS.width * 0.75}
-          bckColor={COLORS.first}
+          customStyle={primaryBtn}
           txtColor={COLORS.fourth}
           onPress={handleBtnSignIn}
         />

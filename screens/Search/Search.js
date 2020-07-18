@@ -14,7 +14,11 @@ const Search = ({ navigation }) => {
   const nextStep = () => setStep(step < 3 ? step + 1 : 1);
   const prevStep = () => setStep(step > 1 ? step - 1 : step);
   const goMenu = () => navigation.navigate("Menu", { screen: "Menu" });
-
+  const primaryBtn = {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.75,
+    backgroundColor: COLORS.fourth,
+  };
   return (
     <View style={styles.screen}>
       <View style={styles.top}>
@@ -28,9 +32,7 @@ const Search = ({ navigation }) => {
       <View style={styles.bot}>
         <Button
           title="back"
-          height={DIMENSIONS.height * 0.05}
-          width={DIMENSIONS.width * 0.75}
-          bckColor={COLORS.fourth}
+          customStyle={primaryBtn}
           txtColor={COLORS.third}
           onPress={step === 1 ? goMenu : prevStep}
         />

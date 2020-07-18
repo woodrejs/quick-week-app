@@ -10,6 +10,16 @@ import styles from "./Welcome.css";
 import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const Welcome = ({ navigation }) => {
+  const primaryBtn = {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.75,
+    backgroundColor: COLORS.first,
+  };
+  const secoundaryBtn = {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.75,
+    backgroundColor: COLORS.secound,
+  };
   return (
     <View style={styles.screen}>
       <View style={styles.top}>
@@ -21,10 +31,8 @@ const Welcome = ({ navigation }) => {
         </Txt>
         <Button
           title="sign up"
-          bckColor={COLORS.first}
+          customStyle={primaryBtn}
           txtColor={COLORS.fourth}
-          height={DIMENSIONS.height * 0.05}
-          width={DIMENSIONS.width * 0.75}
           onPress={() => navigation.navigate("SignUp")}
         />
         <Txt weight={600} customStyle={styles.txt}>
@@ -32,10 +40,8 @@ const Welcome = ({ navigation }) => {
         </Txt>
         <Button
           title="log in"
-          bckColor={COLORS.secound}
+          customStyle={secoundaryBtn}
           txtColor={COLORS.fourth}
-          height={DIMENSIONS.height * 0.05}
-          width={DIMENSIONS.width * 0.75}
           onPress={() => navigation.navigate("Login")}
         />
       </View>

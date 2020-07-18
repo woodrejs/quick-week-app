@@ -13,11 +13,15 @@ import DATE from "../../constans/DATE";
 
 const SearchDate = ({ navigation, next }) => {
   const dispatch = useDispatch();
-  const dates = useSelector(({ map }) => map);
   const searchParam = useSelector(({ search }) => search);
   const { phrase, type, categories, dateFrom, dateTo } = searchParam;
   const categoryID = categories.map((category) => category.id).toString();
   const KEY = process.env.KEY;
+  const primaryBtn = {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.75,
+    backgroundColor: COLORS.first,
+  };
 
   const FROM = dateFrom ? dateFrom : DATE.from;
   const TO = dateTo ? dateTo : DATE.to;
@@ -57,9 +61,7 @@ const SearchDate = ({ navigation, next }) => {
       <View customStyle={styles.btnBox}>
         <Button
           title="next"
-          height={DIMENSIONS.height * 0.05}
-          width={DIMENSIONS.width * 0.75}
-          bckColor={COLORS.first}
+          customStyle={primaryBtn}
           txtColor={COLORS.fourth}
           onPress={search}
         />

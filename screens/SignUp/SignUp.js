@@ -9,14 +9,23 @@ import GoogleIcon from "../../img/icons/google_icon.svg";
 import DIMENSIONS from "../../constans/DIMENSIONS";
 
 const SignUp = ({ navigation }) => {
+  const primaryBtn = {
+    height: DIMENSIONS.height * 0.06,
+    width: DIMENSIONS.width * 0.75,
+    backgroundColor: COLORS.first,
+  };
+  const secoundaryBtn = {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.75,
+    backgroundColor: COLORS.secound,
+  };
+
   return (
     <View style={styles.screen}>
       <View style={styles.top}>
         <Button
           title="sign up"
-          height={DIMENSIONS.height * 0.06}
-          width={DIMENSIONS.width * 0.75}
-          bckColor={COLORS.first}
+          customStyle={primaryBtn}
           txtColor={COLORS.fourth}
           onPress={() => navigation.push("SignUpForm")}
         />
@@ -30,21 +39,17 @@ const SignUp = ({ navigation }) => {
         <View style={styles.btnBox}>
           <Button
             title="facebook"
-            height={DIMENSIONS.height * 0.05}
-            width={DIMENSIONS.width * 0.75}
-            bckColor={COLORS.secound}
+            customStyle={secoundaryBtn}
             txtColor={COLORS.fourth}
-            component={<FbIcon />}
+            icon={<FbIcon />}
           />
         </View>
         <View style={styles.btnBox}>
           <Button
             title="google"
-            height={DIMENSIONS.height * 0.05}
-            width={DIMENSIONS.width * 0.75}
-            bckColor={COLORS.secound}
+            customStyle={secoundaryBtn}
             txtColor={COLORS.fourth}
-            component={<GoogleIcon />}
+            icon={<GoogleIcon />}
           />
         </View>
       </View>

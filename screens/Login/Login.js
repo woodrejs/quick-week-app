@@ -25,7 +25,11 @@ const Login = ({ navigation }) => {
       })
       .catch((err) => alert(err));
   };
-
+  const primaryBtn = {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.75,
+    backgroundColor: COLORS.first,
+  };
   return (
     <View style={styles.screen}>
       <View style={styles.inputsBox}>
@@ -49,9 +53,7 @@ const Login = ({ navigation }) => {
       <View style={styles.btnBox}>
         <Button
           title="log in"
-          height={DIMENSIONS.height * 0.05}
-          width={DIMENSIONS.width * 0.75}
-          bckColor={COLORS.first}
+          customStyle={primaryBtn}
           txtColor={COLORS.fourth}
           onPress={handleBtnLogin}
         />

@@ -39,7 +39,11 @@ const Event = ({ navigation }) => {
   const tags = eventStore.categories.map((category) => (
     <Tag title={category.name} key={uuid()} />
   ));
-
+  const primaryBtn = {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.9,
+    backgroundColor: COLORS.fourth,
+  };
   const handleButtonLink = async (url) => {
     const supported = await Linking.canOpenURL(url);
     if (supported) await Linking.openURL(url);
@@ -97,9 +101,7 @@ const Event = ({ navigation }) => {
           <View style={styles.btnBox}>
             <Button
               title="go web"
-              height={DIMENSIONS.height * 0.05}
-              width={DIMENSIONS.width * 0.9}
-              bckColor={COLORS.fourth}
+              customStyle={primaryBtn}
               txtColor={COLORS.third}
               onPress={() => handleButtonLink(externalLink)}
             />
@@ -110,9 +112,7 @@ const Event = ({ navigation }) => {
           <View style={styles.btnBox}>
             <Button
               title="go top"
-              height={DIMENSIONS.height * 0.05}
-              width={DIMENSIONS.width * 0.9}
-              bckColor={COLORS.fourth}
+              customStyle={primaryBtn}
               txtColor={COLORS.third}
               onPress={handleButtongoTop}
             />
