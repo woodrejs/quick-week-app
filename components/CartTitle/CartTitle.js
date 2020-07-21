@@ -4,12 +4,12 @@ import Txt from "../Txt";
 import COLORS from "../../constans/COLORS";
 import DIMENSIONS from "../../constans/DIMENSIONS";
 
-const CartTitle = ({ onPress, color, children }) => {
+const CartTitle = ({ onPress, color, title }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={{ ...styles.box, ...{ backgroundColor: color } }}>
         <Txt weight={700} customStyle={styles.txt}>
-          {children}
+          {title}
         </Txt>
       </View>
     </TouchableOpacity>

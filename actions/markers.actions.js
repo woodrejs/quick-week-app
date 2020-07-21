@@ -11,17 +11,18 @@ import {
 } from "../functions/convertData";
 
 export const setPlacesMarkers = (data) => {
+  console.log(data);
   const payload = data.reduce((array, item) => {
-    if ("title" in item)
-      if ("longDescription" in item)
-        if ("mainImage" in item)
-          if ("venue" in item)
-            if ("location" in item)
-              if ("address" in item)
-                if ("carParkAvailable" in item.venue)
-                  if ("telephone" in item.venue)
-                    if ("email" in item.venue)
-                      array.push(convertPlaceMarker(item));
+    if ("venue" in item)
+      if ("carParkAvailable" in item.venue)
+        if ("telephone" in item.venue)
+          if ("email" in item.venue)
+            if ("mainImage" in item)
+              if ("location" in item)
+                if ("address" in item)
+                  if ("street" in item.address)
+                    if ("longDescription" in item)
+                      if ("title" in item) array.push(convertPlaceMarker(item));
 
     return array;
   }, []);
@@ -34,18 +35,16 @@ export const setPlacesMarkers = (data) => {
 export const setEventsMarkers = (data) => {
   const payload = data.reduce((array, item) => {
     if ("events" in item)
-      if ("longDescription" in item)
-        if ("address" in item.events[0])
-          if ("location" in item.events[0])
+      if ("ticketing" in item.events[0])
+        if ("mainImage" in item)
+          if ("address" in item.events[0])
             if ("placeName" in item.events[0])
-              if ("lattiude" in item.events[0].location)
-                if ("endDate" in item.events[0])
-                  if ("place" in item.events[0])
-                    if ("venue" in item.events[0].place)
-                      if ("carParkAvailable" in item.events[0].place.venue)
-                        if ("telephone" in item.events[0].place.venue)
-                          if ("email" in item.events[0].place.venue)
-                            array.push(convertEventMarker(item));
+              if ("location" in item.events[0])
+                if ("lattiude" in item.events[0].location)
+                  if ("longitude" in item.events[0].location)
+                    if ("startDate" in item.events[0])
+                      if ("longDescription" in item)
+                        array.push(convertEventMarker(item));
 
     return array;
   }, []);

@@ -8,7 +8,7 @@ import { createPlanCarts } from "../../functions/createCarts";
 const Plan = ({ navigation }) => {
   const dispatch = useDispatch();
   const userId = useSelector(({ user }) => user.id);
-  const weekPlanEvents = useSelector(({ favorites }) => favorites.planEvents);
+  const weekPlanEvents = useSelector(({ plan }) => plan.events);
   const setDatainStore = (data) => dispatch(planActions.setPlanEvents(data));
 
   useEffect(() => {

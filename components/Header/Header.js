@@ -1,17 +1,14 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import LogoIcon from "../../img/logo/lg_red.svg";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Menu } from "../../icons";
+import COLORS from "../../constans/COLORS";
 
 const Header = ({ navigation }) => {
   return (
     <View style={styles.mainBox}>
       <View style={styles.menuBox}>
-        <MaterialIcons
-          name="menu"
-          size={30}
-          onPress={() => navigation.openDrawer()}
-        />
+        {Menu(30, COLORS.third, () => navigation.openDrawer())}
       </View>
 
       <View style={styles.logoBox}>
@@ -29,3 +26,11 @@ const styles = StyleSheet.create({
   logoBox: { flex: 3, justifyContent: "center", alignItems: "center" },
   menuBox: { flex: 1, justifyContent: "center", alignItems: "flex-start" },
 });
+
+/**
+ *   <MaterialIcons
+          name="menu"
+          size={30}
+          onPress={() => navigation.openDrawer()}
+        />
+ */

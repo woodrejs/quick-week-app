@@ -75,7 +75,7 @@ const Menu = ({ navigation }) => {
         <Button
           title="log out"
           customStyle={logOutBtn}
-          txtColor={COLORS.sixth}
+          txtColor={COLORS.third}
           onPress={handleBtnSignIn}
         />
       </View>

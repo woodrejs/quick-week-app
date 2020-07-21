@@ -11,9 +11,8 @@ import uuid from "uuid-random";
 
 const SearchCategories = ({ next }) => {
   const searchType = useSelector(({ search }) => search.type);
-  const placesCategories = useSelector(({ app }) => app.places);
-  const eventsCategories = useSelector(({ app }) => app.events);
-  const categories = searchType ? placesCategories : eventsCategories;
+  const categories = useSelector(({ categories }) => categories);
+  const data = searchType ? categories.places : categories.events;
   const primaryBtn = {
     height: DIMENSIONS.height * 0.05,
     width: DIMENSIONS.width * 0.75,
@@ -31,7 +30,7 @@ const SearchCategories = ({ next }) => {
         <FlatList
           horizontal={false}
           numColumns={1}
-          data={categories}
+          data={data}
           renderItem={({ item }) => <Tile name={item.name} id={item.id} />}
           keyExtractor={() => uuid()}
         />

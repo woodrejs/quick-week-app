@@ -11,15 +11,11 @@ const IconsSection = ({
   iconSize,
   heartIcon,
   quickIcon,
-  id,
-  type,
-  image,
-  title,
+  data,
 }) => {
-  const collectionName = `favorites${type ? "Places" : "Events"}`;
-  const data = { id, image, title };
+  const collName = data.type ? "favoritesPlaces" : "favoritesEvents";
   const userId = useSelector(({ user }) => user.id);
-  const handleFavoriteIcon = () => addToFavorites(collectionName, userId, data);
+  const handleFavoriteIcon = () => addToFavorites(collName, userId, data);
   const handleWeekPlanIcon = () => addToFavorites("WeekPlan", userId, data);
 
   return (

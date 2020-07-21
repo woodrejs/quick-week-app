@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
   View,
   ScrollView,
@@ -11,50 +11,40 @@ import Button from "../../components/Button";
 import COLORS from "../../constans/COLORS";
 import Tag from "../../components/Tag";
 import IconsSection from "../../components/IconsSection";
-import InfoIcon from "../../components/InfoIcon";
-import Clock1 from "../../img/icons/clock1_icon.svg";
 import Gallery from "../../components/Gallery";
 import styles from "./Event.css";
-import BotBck from "../../img/backgrounds/botBck.svg";
 import DIMENSIONS from "../../constans/DIMENSIONS";
 import { useSelector } from "react-redux";
 import uuid from "uuid-random";
-import { convertDescription } from "../../functions/convertData";
+import InfoIconsSection from "../../components/InfoIconsSection";
 
-const Event = ({ navigation }) => {
-  const eventStore = useSelector(({ event }) => event.data);
+const Event = () => {
   const ref = React.createRef();
+  const data = useSelector(({ event }) => event.data);
 
-  const title = eventStore.title;
-  const mainImg = eventStore.images.length
-    ? { uri: eventStore.images[0].standard }
-    : null;
-  const street = eventStore.street ? eventStore.street : "brak";
-  const telephone = eventStore.telephone ? eventStore.telephone : "brak";
-  const email = eventStore.email ? eventStore.email : "brak";
-  const carPark = eventStore.carParkAvailable ? "dostępny" : "brak";
-  const images = eventStore.images;
-  const externalLink = eventStore.externalLink;
-  const longDescription = convertDescription(eventStore.longDescription);
-  const tags = eventStore.categories.map((category) => (
-    <Tag title={category.name} key={uuid()} />
+  const { id, title, images, externalLink, longDescription, type } = data;
+
+  const tags = data.categories.map(({ name }) => (
+    <Tag title={name} key={uuid()} />
   ));
-  const primaryBtn = {
-    height: DIMENSIONS.height * 0.05,
-    width: DIMENSIONS.width * 0.9,
-    backgroundColor: COLORS.fourth,
-  };
+
   const handleButtonLink = async (url) => {
     const supported = await Linking.canOpenURL(url);
     if (supported) await Linking.openURL(url);
     else Alert.alert(`Don't know how to open this URL: ${url}`);
   };
-  const handleButtongoTop = () =>
+  const handleButtongoTop = () => {
     ref.current.scrollResponderScrollTo({
       x: 0,
       y: 0,
       animated: true,
     });
+  };
+  const primaryBtn = {
+    height: DIMENSIONS.height * 0.05,
+    width: DIMENSIONS.width * 0.9,
+    backgroundColor: COLORS.fourth,
+  };
 
   return (
     <View>
@@ -68,27 +58,22 @@ const Event = ({ navigation }) => {
         <View style={styles.tagsBox}>{tags}</View>
 
         <View style={styles.imgBox}>
-          <ImageBackground source={mainImg} style={styles.img}>
+          <ImageBackground
+            source={{ uri: images[0].standard }}
+            style={styles.img}
+          >
             <View style={styles.mask}></View>
             <IconsSection
+              data={data}
               customStyle={styles.imgIconsBox}
               iconSize={30}
-              id={eventStore.id}
               heartIcon={true}
-              quickIcon={!eventStore.type}
-              type={eventStore.type} /// do zrobienia
-              image={eventStore.images[0].standard}
-              title={eventStore.title}
+              quickIcon={!type}
             />
           </ImageBackground>
         </View>
 
-        <View style={styles.infoIconsBox}>
-          <InfoIcon icon={<Clock1 height={30} width={30} />} txt={telephone} />
-          <InfoIcon icon={<Clock1 height={30} width={30} />} txt={email} />
-          <InfoIcon icon={<Clock1 height={30} width={30} />} txt={carPark} />
-          <InfoIcon icon={<Clock1 height={30} width={30} />} txt={street} />
-        </View>
+        <InfoIconsSection data={data} />
 
         <View style={styles.txtBox}>
           <Txt weight={500} customstyle={styles.txt}>
@@ -97,7 +82,6 @@ const Event = ({ navigation }) => {
         </View>
 
         <View style={styles.botBox}>
-          <BotBck style={styles.bck} />
           <View style={styles.btnBox}>
             <Button
               title="go web"
@@ -124,3 +108,21 @@ const Event = ({ navigation }) => {
 };
 
 export default Event;
+/*
+   <View style={styles.infoIconsBox}>
+          <InfoIcon
+            icon={type ? Phone(30, COLORS.first) : Clock(30, COLORS.first)}
+            txt={type ? telephone : startDate}
+          />
+          <InfoIcon
+            icon={type ? Email(30, COLORS.first) : Place(30, COLORS.first)}
+            txt={type ? email : place}
+          />
+          <InfoIcon
+            icon={type ? Parking(30, COLORS.first) : Ticket(30, COLORS.first)}
+            txt={type ? carParkAvailable : ticketing}
+          />
+          <InfoIcon icon={Street(30, COLORS.first)} txt={street} />
+        </View>
+
+        */

@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import styles from "./Cart.css";
-import Txt from "../Txt";
-import ImgBox from "../ImgBox";
 import IconsSection from "../IconsSection";
 import CartTitle from "../CartTitle";
 import DIMENSIONS from "../../constans/DIMENSIONS";
-import CustomModal from "../CustomModal";
+import ModalDelete from "../ModalDelete";
+import CartBox from "../CartBox";
 
 const Cart = ({
   onPress,
@@ -19,7 +18,7 @@ const Cart = ({
   type,
   collection,
 }) => {
-  const { id, image, title } = data;
+  const { image, title } = data;
   const [modalVisible, setModalVisible] = useState(false);
 
   const showModal = () => setModalVisible(true);
@@ -27,34 +26,25 @@ const Cart = ({
 
   return (
     <View style={styles.container}>
-      <ImgBox onPress={onPress} img={image} onLongPress={showModal}>
-        <View style={styles.cornerBox}>
-          <Txt weight={700} customStyle={styles.cornerTxt}>
-            {cornerTxt}
-          </Txt>
-        </View>
-        <View style={styles.middleBox}>
-          <Txt weight={700} customStyle={styles.middleTxt}>
-            {middleTxt}
-          </Txt>
-        </View>
-      </ImgBox>
+      <CartBox
+        onPress={onPress}
+        onLongPress={showModal}
+        image={image}
+        cornerTxt={cornerTxt}
+        middleTxt={middleTxt}
+      />
 
-      <CartTitle onPress={onPress} color={color}>
-        {title}
-      </CartTitle>
+      <CartTitle onPress={onPress} color={color} title={title} />
 
       <IconsSection
-        id={id}
-        image={image}
-        title={title}
+        data={data}
         customStyle={styles.iconsBox}
         iconSize={DIMENSIONS.height * 0.04}
         heartIcon={heartIcon}
         quickIcon={quickIcon}
-        type={type}
       />
-      <CustomModal
+
+      <ModalDelete
         data={data}
         type={type}
         visible={modalVisible}

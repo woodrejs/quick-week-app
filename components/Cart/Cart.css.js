@@ -17,31 +17,6 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 2,
   },
-  cornerBox: {
-    position: "absolute",
-    left: DIMENSIONS.width * 0.03,
-    top: DIMENSIONS.width * 0.035,
-  },
-  cornerTxt: {
-    textTransform: "uppercase",
-    fontSize: DIMENSIONS.width * 0.04,
-    lineHeight: DIMENSIONS.width * 0.04,
-    color: COLORS.fourth,
-    letterSpacing: 1,
-    textAlign: "left",
-  },
-  middleBox: {
-    flex: 2,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  middleTxt: {
-    textTransform: "uppercase",
-    fontSize: DIMENSIONS.width * 0.15,
-    color: COLORS.fourth,
-    letterSpacing: 1,
-    textAlign: "left",
-  },
   iconsBox: {
     position: "absolute",
     right: DIMENSIONS.width * 0.035,

@@ -23,6 +23,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
   },
-  iconBox: { marginRight: 15 },
-  txt: {},
+  iconBox: { marginRight: 10, flex: 1, alignItems: "center" },
+  txt: { flex: 5, flexWrap: "wrap", fontSize: 11 },
 });

@@ -7,10 +7,7 @@ import DIMENSIONS from "../../constans/DIMENSIONS";
 import COLORS from "../../constans/COLORS";
 import styles from "./MapBtnsSection.css";
 
-const MapBtnsSection = ({ navigation }) => {
-  const { first, third, fourth } = COLORS;
-  const width = DIMENSIONS.width * 0.2;
-  const height = DIMENSIONS.height * 0.035;
+const MapBtnsSection = () => {
   const dispatch = useDispatch();
 
   const markersType = useSelector(({ markers }) => markers.displayedType);
@@ -19,25 +16,34 @@ const MapBtnsSection = ({ navigation }) => {
   const displayEventsMarkers = () =>
     dispatch(markersActions.setTypeMarkers(false));
 
+  const { first, third, fourth } = COLORS;
+
+  const primaryBtn = {
+    width: DIMENSIONS.width * 0.2,
+    height: DIMENSIONS.height * 0.035,
+    backgroundColor: markersType ? first : fourth,
+  };
+  const secoundaryBtn = {
+    width: DIMENSIONS.width * 0.2,
+    height: DIMENSIONS.height * 0.035,
+    backgroundColor: markersType ? fourth : first,
+  };
+
   return (
     <View style={styles.box}>
       <View style={styles.topBox}>
         <Button
-          width={width}
-          height={height}
-          bckColor={markersType ? first : fourth}
-          txtColor={markersType ? fourth : third}
           title="places"
-          radius={styles.firstBtn}
+          customStyle={primaryBtn}
+          txtColor={markersType ? fourth : third}
+          radius={styles.primaryBtn}
           onPress={displayPlacesMarkers}
         />
         <Button
-          width={width}
-          height={height}
-          bckColor={markersType ? fourth : first}
-          txtColor={markersType ? third : fourth}
           title="events"
-          radius={styles.secoundBtn}
+          customStyle={secoundaryBtn}
+          txtColor={markersType ? third : fourth}
+          radius={styles.secoundaryBtn}
           onPress={displayEventsMarkers}
         />
       </View>

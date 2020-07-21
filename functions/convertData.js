@@ -1,44 +1,39 @@
+export const convertDescription = (text) => {
+  if (text) return text.replace(/<[^>]*>/g, "").replace(/&\D*;/g, "");
+};
+
 export const convertPlace = (obj) => {
   return {
     id: obj.id,
-    title: obj.title,
-    externalLink: obj.externalLink,
-    longDescription: obj.longDescription,
-    categories: obj.categories,
-    images: obj.images,
-    latt: obj.location.lattiude,
-    long: obj.location.longitude,
-    street: obj.address.street,
-    telephone: obj.venue.telephone,
-    email: obj.venue.email,
-    carParkAvailable: obj.venue.carParkAvailable,
-    type: true,
+    title: obj.title || "brak",
+    externalLink: obj.externalLink || null,
+    longDescription: convertDescription(obj.longDescription) || "brak",
+    categories: obj.categories || null,
+    images: obj.images || null,
+    street: obj.address.street || "brak",
+    telephone: obj.venue.telephone.split(",")[0] || "brak",
+    email: obj.venue.email.split(",")[0] || "brak",
+    carParkAvailable: obj.venue.carParkAvailable
+      ? "parking dostępny"
+      : "brak parkingu",
+    type: true, // true for place
   };
 };
 
 export const convertEvent = (obj) => {
   return {
     id: obj.id,
-    startDate: obj.startDate,
-    endDate: obj.endDate,
-    latt: obj.location.lattiude,
-    long: obj.location.longitude,
-    street: obj.address.street,
-    place: obj.placeName,
-    title: obj.offer.title,
-    longDescription: obj.offer.longDescription,
-    externalLink: obj.offer.externalLink,
-    images: obj.offer.images,
-    categories: obj.offer.categories,
-    telephone: obj.place.venue.telephone,
-    email: obj.place.venue.email,
-    carParkAvailable: obj.place.venue.carParkAvailable,
-    type: false,
+    title: obj.offer.title || "brak",
+    longDescription: convertDescription(obj.offer.longDescription) || "brak",
+    externalLink: obj.offer.externalLink || null,
+    images: obj.offer.images || null,
+    categories: obj.offer.categories || null,
+    startDate: obj.startDate.replace("T", " ") || "brak",
+    street: obj.address.street || "brak",
+    place: obj.placeName || "brak",
+    ticketing: obj.ticketing,
+    type: false, // false for event
   };
-};
-
-export const convertDescription = (text) => {
-  if (text) return text.replace(/<[^>]*>/g, "").replace(/&\D*;/g, "");
 };
 
 export const convertEventMarker = (obj) => {
@@ -47,27 +42,25 @@ export const convertEventMarker = (obj) => {
   return {
     id: events.id,
     title,
-    longDescription,
+    longDescription: convertDescription(longDescription),
     street: events.address.street,
     latitude: events.location.lattiude,
     longitude: events.location.longitude,
-    placeName: events.placeName,
-    type: false,
-    startDate: events.startDate.slice(0, 10),
-    endDate: events.endDate.slice(0, 10),
+    type: false, //false for event
   };
 };
 
 export const convertPlaceMarker = (obj) => {
+  console.log(obj);
   const { id, title, longDescription, address, location } = obj;
   return {
     id,
     title,
-    longDescription,
+    longDescription: convertDescription(longDescription),
     street: address.street,
     latitude: location.lattiude,
     longitude: location.longitude,
-    type: true,
+    type: true, // true for place
   };
 };
 

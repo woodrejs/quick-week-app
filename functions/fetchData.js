@@ -23,6 +23,7 @@ export const fetchMarkers = async (URL) => {
 };
 
 export const fetchPlace = async (id) => {
+  console.log(id);
   const KEY = process.env.KEY;
   const URL = `https://go.wroclaw.pl/api/v1.0/places/${id}/?key=${KEY}`;
 

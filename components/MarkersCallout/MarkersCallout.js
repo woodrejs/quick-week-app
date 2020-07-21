@@ -5,18 +5,10 @@ import Txt from "../Txt";
 import Logo from "../../img/logo/lg_red.svg";
 import styles from "./MarkersCallout.css";
 import { useDispatch } from "react-redux";
-import { convertDescription } from "../../functions/convertData";
 import { storePlace, storeEvent } from "../../functions/setInStore";
 
-const MarkersCallout = ({
-  title,
-  street,
-  longDescription,
-  type,
-  navigation,
-  id,
-}) => {
-  const description = convertDescription(longDescription);
+const MarkersCallout = ({ data, navigation }) => {
+  const { title, street, longDescription, type, id } = data;
   const dispatch = useDispatch();
 
   const handlePress = async () => {
@@ -46,7 +38,7 @@ const MarkersCallout = ({
             ellipsizeMode="head"
             numberOfLines={4}
           >
-            {description}
+            {longDescription}
           </Text>
         </View>
       </View>

@@ -1,7 +1,14 @@
 import { COORDS_LOADED, SET_COORDS } from "../constans/VARIABLES";
 
+const INITIAL_REGION = {
+  latitude: 51.1078852,
+  longitude: 17.0385376,
+  latitudeDelta: 20,
+  longitudeDelta: 20,
+};
+
 const initState = {
-  coords: {},
+  coords: INITIAL_REGION,
   coordsLoaded: false,
 };
 

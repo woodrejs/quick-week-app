@@ -4,9 +4,10 @@ import DIMENSIONS from "../../constans/DIMENSIONS";
 const styles = StyleSheet.create({
   box: {
     position: "absolute",
+    width: "100%",
+    alignItems: "center",
     height: DIMENSIONS.height * 0.1,
-    right: 0,
-    marginTop: DIMENSIONS.width * 0.05,
+    bottom: DIMENSIONS.height * 0.04,
   },
   topBox: {
     flex: 1,
@@ -15,12 +16,12 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   botBox: { flex: 1, justifyContent: "center", alignItems: "flex-end" },
-  firstBtn: {
+  primaryBtn: {
     borderRadius: 0,
     borderTopLeftRadius: 5,
     borderBottomLeftRadius: 5,
   },
-  secoundBtn: { borderRadius: 0 },
+  secoundaryBtn: { borderRadius: 0 },
 });
 
 export default styles;

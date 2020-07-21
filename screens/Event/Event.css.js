@@ -12,13 +12,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "relative",
   },
-  bck: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
-    left: 0,
-    bottom: 0,
-  },
   titleBox: { width: "90%", marginBottom: 20 },
   title: { fontSize: 25, textTransform: "uppercase", letterSpacing: 1 },
   tagsBox: {
@@ -50,13 +43,6 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: COLORS.third,
     opacity: 0.3,
-  },
-  infoIconsBox: {
-    flexDirection: "row",
-    width: "90%",
-    flexWrap: "wrap",
-    height: 120,
-    marginBottom: 30,
   },
   txtBox: { width: "90%", marginBottom: 30 },
   txt: { fontSize: 10, letterSpacing: 1 },
